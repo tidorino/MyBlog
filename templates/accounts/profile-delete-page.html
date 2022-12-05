@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+    <!-- Start Delete Profile Section -->
+        <div class="delete-profile">
+            <h1>
+                Are you sure you want to delete your profile?
+            </h1>
+            <div class="sure-buttons">
+                <form method="post" action="{% url 'delete user' pk=object.pk %}">
+                    <button>Yes</button>
+                    {% csrf_token %}
+                </form>
+                <p>
+                    <a href="{% url 'details user' pk=object.pk %}" class="back-home">Go Back</a>
+                </p>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+/* Post Content */
+.post-header{
+    width: 100%;
+    height: 180px;
+    background: var(--nav-bar);
+}
+.post-container{
+    max-width: 700px;
+    margin: auto;
+    width: 100%;
+    display: block;
+}
+.header-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem !important;
+}
+.back-home{
+    color: var(--second-color);
+    font-size: 0.9rem;
+}
+.header-title{
+    width: 90%;
+    font-size: 2.2rem;
+    color: var(--bg-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.header-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+.post-content{
+    margin-top: 21rem !important;
+}
+.sub-heading{
+    font-size: 1.2rem;
+}
+.post-text{
+    font-size: 1rem;
+    line-height: 1.7rem;
+    margin: 1rem 0;
+    text-align: justify;
+}
+
+/* Share */
+.share{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+}
+.share-title{
+    font-size: 1.1rem;
+}
+
+/*author info*/
+.author-block__wrapper:before {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    z-index: 0;
+    display: block;
+    content: "";
+    transform: translateX(-50%);
+    background: #E6EDF0;
+    box-sizing: inherit;
+}
+.author-block .view-author-info {
+    position: relative;
+}
+
+@media (min-width: 640px){
+    .author-block .view-author-info {
+        padding-left: 12.5rem;
+    }
+}

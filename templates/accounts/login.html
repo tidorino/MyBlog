@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    <!-- Registration -->
+    <div id="container">
+        <form method="post" action="{% url 'login user' %}" id="login">
+
+            <div class="border-box">
+                <h2 class="form-title">Login Form</h2>
+                {{ form.as_p}}
+{#                <input type="hidden" name="next" value="{{ next }}">#}
+                <button type="submit" value="Login" id="submit" onClick="alert('Login Successfully')">Login</button>
+                {% csrf_token %}
+
+            </div>
+        </form>
+        <div class="second-option">
+            <!-- Link to Register Page-->
+            <p>Don't have account? <a href="{% url 'register user' %}">Register</a></p>
+        </div>
+    </div>
+{% endblock %}

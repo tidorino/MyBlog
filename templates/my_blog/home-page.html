@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    <!-- Post Filter -->
+    <div class="post-filter container">
+        <span class="filter-item active-filter" data-filter="all">All</span>
+        <span class="filter-item" data-filter="new events">New Events</span>
+        <span class="filter-item" data-filter="courses">Courses</span>
+    </div>
+
+    <!-- Posts -->
+    <section class="post container">
+        {% for post in posts %}
+
+        <!-- Post Box 1 -->
+            <div class="post-box ">
+
+                <img src="{{post.image_url}}"
+                    alt="{{ post.slug }}" class="post-img">
+                <h2 class="category">{{ post.category }}</h2>
+
+                <!-- Link to the article -->
+                <a href="{% url 'details post' slug=post.slug %}" class="post-title">{{ post.title }}</a>
+                <span class="post-date">{{ post.created_on}}</span>
+                <p class="post-description">{{ post.intro}}</p>
+
+            <!-- Profile -->
+                <div class="profile">
+                    <img src="{{post.author.profile_image}}"
+                        alt="{{ post.author.full_name }}" class="profile-img">
+                    <span class="profile-name">{{ post.author.full_name }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
+

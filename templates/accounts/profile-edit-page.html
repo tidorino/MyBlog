@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <!-- Start Edit Profile Section -->
+    <div class="edit-delete">
+        <h2>Edit Profile</h2>
+
+        <form method="post" action="{% url 'edit user' pk=object.pk%}">
+            {{ form.as_p }}
+
+            <button class="sure-btn1" type="submit">Edit</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

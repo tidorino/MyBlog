@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load placeholders %}
+{% load static %}
+
+{% block page_content %}
+    <!-- Registration -->
+    <section id="container prof">
+        <form method="post" action="{% url 'register user' %}">
+            <div class="border-box prof">
+                <h2 class="form-title">Profile</h2>
+                {{ form.as_p }}
+
+                <button type="submit" class="register">Register</button>
+                {% csrf_token %}
+            </div>
+        </form>
+    </section>
+    <div class="second-option">
+        <p>Have an account? <a href="{% url 'login user' %}">Log in</a></p>
+
+    </div>
+{% endblock %}

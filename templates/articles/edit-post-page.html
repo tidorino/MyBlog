@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div class="edit-delete">
+        <h2>Edit Article</h2>
+
+        <form method="post" action="{% url 'edit post' slug=object.slug %}">
+            {{ form.as_p }}
+
+            <button class="sure-btn1" type="submit">Edit</button>
+            {% csrf_token %}
+        </form>
+    </div>
+
+
+{% endblock %}

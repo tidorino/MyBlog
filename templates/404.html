@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog </title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <!-- Box Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav container">
+                <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- 404 page -->
+    <div class="not-found-img">
+        <img src="{% static 'images/404-page-not-found_new.jpg' %}"
+             alt="404 not found ">
+    </div>
+
+    <div class="not-found">
+        <h1>
+            Uh oh,<br> something broke.
+        </h1>
+
+        <h3>Error 404 - page not found.</h3>
+        <!-- Link to Home Page -->
+        <a href="{% url 'index' %}">
+            <button>Return to MyBlog</button>
+        </a>
+    </div>
+    <!-- End 404 page -->

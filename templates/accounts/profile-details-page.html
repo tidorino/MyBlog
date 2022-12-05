@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    <div class="profile1">
+        <!-- Profile -->
+        <div class="profile1-data">
+            <div class="profile1-img">
+                <div class="image">
+                    <img src="{{object.profile_image}}"
+                         alt="" class="profile1-img" width="250" height="150">
+                </div>
+            </div>
+            <div class="personal">
+                <div class="edit">
+                    <!-- User Username -->
+                    <p>{{ object.name }}</p>
+
+                    {% if is_owner %}
+                        <a href="{% url 'edit user' pk=object.pk %}">
+                            <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}"
+                             alt="edit button">
+                        </a>
+                        <a href="{% url 'delete user' pk=object.pk %}">
+                            <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}"
+                             alt="bin button">
+                        </a>
+                    {% endif %}
+
+                </div>
+                <div class="data">
+
+                    <!-- Total Number of Articles by the User -->
+                    <span>{{ object.article_set.count }}</span>
+                    <p>Articles</p>
+
+                </div>
+                <p class="names">{{ object.full_name }}</p>
+                <p class="email">{{ object.email }}</p>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="articles">
+        <br><br>
+        <h2>{{ object.full_name }} All Articles:</h2>
+            <div class="statuses">
+                {% for article in object.article_set.all %}
+                    <div class="post-box ">
+                        <img src="{{article.image_url}}"
+                             alt="{{ article.slug }}" class="post-img">
+                        <h2 class="category">{{ article.category }}</h2>
+                        <a href="{% url 'details post' slug=article.slug %}" class="post-title">{{ article.title }}</a>
+                        <p class="post-description">{{ article.intro}}</p>
+                        <div class="profile">
+                            <img src="{{object.profile_image}}"
+                                alt="{{ object.full_name }}" class="profile-img">
+                            <span class="profile-name">{{ object.full_name }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+{% endblock %}
