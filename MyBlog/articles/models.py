@@ -21,7 +21,7 @@ class Article(models.Model):
     CATEGORY_MAX_LEN = 20
 
     """
-    To Do: 
+    To Do:
     to change 'author' to show in admin panel with 'full name' not with 'e-mail'
     """
 
