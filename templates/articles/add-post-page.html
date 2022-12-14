@@ -15,30 +15,7 @@
                 {{ form.as_p }}
                 <button class="sure-btn1" type="submit">Add</button>
                 {% csrf_token %}
-
-{#                <h1 class="header-title">{{ article.title}}</h1>#}
-{#            <!-- Post Image -->#}
-{#                <img src="{% static 'images/onlain_kurs.jpg' %}" alt="" class="header-img">#}
             </form>
         </div>
     </section>
-    <!-- Posts -->
-    <section class="post-content post-container">
-        {% for article in object_list %}
-            <h2 class="sub-heading">Step-by-step guide</h2>
-            <p class="post-text">{{ article.body}}</p>
-{#            <p class="post-text">Anyone can connect with their audience through blogging and enjoy the myriad benefits that blogging provides: organic traffic from search engines, promotional content for social media, and recognition from a new audience you haven't tapped into yet.</p>#}
-{#            <h2 class="sub-heading">About blogging</h2>#}
-{#            <p class="post-text">If you've heard about blogging but are a beginner and don't know where to start, the time for excuses is over. Not only can you create an SEO-friendly blog, but we'll cover how to write and manage your business's blog as well as provide helpful templates to simplify your blogging efforts.</p>#}
-{#            <p class="post-text">Let's get started with an important question. Blogging may mean different things depending on your niche — so let’s begin with this definition.</p>#}
-        {% endfor %}
-    </section>
-    <!-- Share -->
-    <div class="share post-container">
-        <span class="share-title">Share this article</span>
-        <div class="social">
-            <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
-            <a href="#"><i class='bx bx-envelope'></i></a>
-        </div>
-    </div>
 {% endblock %}

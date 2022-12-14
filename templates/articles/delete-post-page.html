@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+{% block page_content %}
 
-</body>
-</html>
+    <!-- Start Delete Post Section -->
+        <div class="delete-profile">
+            <h2>
+                Are you sure you want to delete article?
+            </h2>
+            <div class="sure-buttons">
+                <form method="post" action="{% url 'delete post' slug=object.slug %}">
+                    <button>Yes</button>
+                    {% csrf_token %}
+                </form>
+                <p>
+                    <a href="{% url 'details post' slug=object.slug %}" class="back-home">Go Back</a>
+                </p>
+            </div>
+        </div>
+
+{% endblock %}

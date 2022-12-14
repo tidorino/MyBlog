@@ -8,3 +8,6 @@ def placeholder(value, text):
     value.field.widget.attrs['placeholder'] = text
 
     return value
+
+
+

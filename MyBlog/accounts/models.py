@@ -1,6 +1,7 @@
 from django.contrib.auth import models as auth_models
 from django.core.validators import MinLengthValidator
 from django.db import models
+from django.utils import timezone
 
 from MyBlog.accounts.managers import BlogUserManager
 from MyBlog.core.validators import validate_only_letters
@@ -13,7 +14,7 @@ class BlogUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         blank=False,
     )
     date_joined = models.DateTimeField(
-        auto_now_add=True,
+        default=timezone.now,
     )
     is_staff = models.BooleanField(
         default=False,
@@ -25,11 +26,21 @@ class BlogUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
     objects = BlogUserManager()
 
+    def __str__(self):
+        return self.email
+
 
 class Profile(models.Model):
 
     MAX_LEN_NAME = 30
     MIN_LEN_NAME = 2
+
+    user = models.OneToOneField(
+        BlogUser,
+        primary_key=True,
+        on_delete=models.CASCADE,
+        related_name='profile'
+    )
 
     first_name = models.CharField(
         max_length=MAX_LEN_NAME,
@@ -37,8 +48,8 @@ class Profile(models.Model):
             MinLengthValidator(MIN_LEN_NAME),
             validate_only_letters,
         ),
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
     )
     last_name = models.CharField(
         max_length=MAX_LEN_NAME,
@@ -46,8 +57,8 @@ class Profile(models.Model):
             MinLengthValidator(MIN_LEN_NAME),
             validate_only_letters,
         ),
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
     )
 
     profile_image = models.URLField(
@@ -55,19 +66,11 @@ class Profile(models.Model):
         blank=False,
     )
 
-    user = models.OneToOneField(
-        BlogUser,
-        primary_key=True,
-        on_delete=models.CASCADE,
-    )
+    def __str__(self):
+        return self.full_name
 
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
-
-
-
-
-
 
 

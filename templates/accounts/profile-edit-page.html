@@ -8,6 +8,9 @@
             {{ form.as_p }}
 
             <button class="sure-btn1" type="submit">Edit</button>
+            <a href="{% url 'index' %}">
+                <button class="sure-btn1" type="submit">Back</button>
+            </a>
             {% csrf_token %}
         </form>
     </div>

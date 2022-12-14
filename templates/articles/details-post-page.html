@@ -1,35 +1,35 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
 <body>
-<section class="card">
+<section class="blogs-section">
     <div class="post-content post-container">
-        
+
+        <h2 class="heading"></h2>
+        <h2 class="category">{{ object.category }}</h2>
         <div class="thumbnail">
             <img src="{{ object.image_url }}" alt="{{ object.slug }}" class="img1">
         </div>
+<!-- blog section -->
 
-            <h1 class="h1-title">{{object.title}}</h1>
-            <div class="author1">
-                <img src="{{ object.author.profile_image }}" alt="{{ object.author.full_name }}">
-                <h3>by {{object.author}} | {{object.created_on}}</h3>
+        <div class="blog-card">
+{#        <img src="#" class="blog-image" alt="">#}
+            <h1 class="blog-title">{{ object.title}}</h1>
+            <p class="blog-overview">{{ object.body}}</p>
 
+            <!-- Profile -->
+            {% include 'base/partials/profile_info.html' with post=object %}
+
+            <div>
+                {% if request.user.is_superuser or request.user_group.Editors %}
+                    <a href="{% url 'edit post' object.slug %}" class="btn2 grey">Edit</a>
+                    <a href="{% url 'delete post' object.slug %}" class="btn2 danger">Delete</a>
+                    <a href="{% url 'index' %}" class="btn2 danger">All Articles</a>
+                {% endif %}
             </div>
-            <div class="separator">
-                <h2 class="intro">{{ object.intro }}</h2>
-                <p class="ptext">{{ object.body }}</p>
+        </div>
 
-            </div>
     </div>
 </section>
-
-<div class="post-filter">
-    <a href="{% url 'index' %}" class="add-article btn1">All Articles</a>
-
-        {% if request.user.is_superuser or request.user_group.Editors %}
-            <a href="{% url 'edit post' object.slug %}" class="add-article btn1">Edit</a>
-            <a href="{% url 'delete post' object.slug %}" class="add-article btn1">Delete</a>
-        {% endif %}
-</div>
 </body>
 
 {% endblock page_content %}

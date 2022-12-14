@@ -383,9 +383,9 @@ header.shadow .logo{
  .thumbnail{
      float : left;
      position : absolute;
-     left : 30px;
-     top : -30px;
-     height : 320px;
+     left : 150px;
+     top : 220px;
+     height : 220px;
      width : 530px;
      -webkit-box-shadow: 10px 10px 60px 0 rgba(0,0,0,0.75);
      -moz-box-shadow: 10px 10px 60px 0 rgba(0,0,0,0.75);
@@ -463,5 +463,15 @@ h2.intro{
     padding-top: 150px;
 }
 
-
+.card1 {
+      background-color: var(--bg-color);
+      width: 500px;
+      border: 1px solid var(--nav-bar);
+      border-radius: 5px;
+      padding: 50px;
+      margin: 20px;
+      /*{#box-shadow: 0 16px 48px #6a6a6b;#}*/
+      position: relative;
+      left: 400px;
+  }
 

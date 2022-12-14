@@ -1,21 +1,27 @@
+{% load has_group %}
 <!-- Nav -->
 <nav>
     <div class="nav container">
-                <!-- Logo -->
-        <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
-
         <div class="nav-button">
-            {% if request.user.is_authenticated %}
+            {% if request.user|has_group:"Editors" or request.user.is_superuser %}
+                 <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
                 <a href="{% url 'logout user' %}" class="logout btn1" >LogOut</a>
                 <a href="{% url 'details user' pk=request.user.pk %}" class="profile-user">Profile</a>
 
                 <a href="{% url 'add post' %}" class="add-article btn1">Add Article</a>
+            {% elif request.user.is_authenticated %}
+                <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
+                <a href="{% url 'logout user' %}" class="logout btn1" >LogOut</a>
+                <a href="{% url 'details user' pk=request.user.pk %}" class="profile-user">Profile</a>
 
             {% else %}
+                 <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
                 <a href="{% url 'register user' %}" class="login btn1">Register</a>
                 <a href="{% url 'login user' %}" class="login btn1">LogIn</a>
 
             {% endif %}
         </div>
-    </div>
+      </div>
 </nav>
