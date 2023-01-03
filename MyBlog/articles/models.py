@@ -31,7 +31,7 @@ class Article(models.Model):
     )
 
     author = models.ForeignKey(
-        to=UserModel,
+        to=Profile,
         # 'Restrict - we can't delete auther as he is connected to article
         on_delete=models.CASCADE,
         related_name='articles',

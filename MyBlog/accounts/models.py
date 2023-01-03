@@ -40,7 +40,7 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
         related_name='profile'
-    )
+    )  # user_id => 'profile_instance.pk' will work
 
     first_name = models.CharField(
         max_length=MAX_LEN_NAME,

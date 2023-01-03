@@ -34,14 +34,12 @@ UserModel = get_user_model()
 def index(request):
     user = UserModel.objects.all()
     posts = Article.objects.all()
-    profile = Profile.objects.filter(user_id=request.user.pk)
-    # queryset = posts.filter(status=Article.PUBLISHED)
+    profile = Profile.objects.all()
 
     context = {
         'posts': posts,
         'user': user,
         'profile': profile,
-        # 'queryset': queryset,
         'no_profile': True,
     }
 
