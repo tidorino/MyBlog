@@ -16,8 +16,8 @@
             <h1 class="blog-title">{{ object.title}}</h1>
             <p class="blog-overview">{{ object.body}}</p>
 
-            <!-- Profile -->
-            {% include 'base/partials/profile_info.html' with post=object %}
+            <!-- Author Info -->
+            {% include 'base/partials/author_info.html' %}
 
             <div>
                 {% if request.user.is_superuser or request.user_group.Editors %}

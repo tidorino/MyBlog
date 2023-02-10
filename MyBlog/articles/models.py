@@ -3,6 +3,7 @@ from enum import Enum
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
+from cloudinary import models as cloudinary_models
 
 from MyBlog.accounts.models import Profile
 
@@ -32,7 +33,7 @@ class Article(models.Model):
 
     author = models.ForeignKey(
         to=Profile,
-        # 'Restrict - we can't delete auther as he is connected to article
+        # 'Restrict - we can't delete author as he is connected to article
         on_delete=models.CASCADE,
         related_name='articles',
     )
@@ -55,7 +56,7 @@ class Article(models.Model):
         null=False,
         blank=True,
     )
-    # intro = models.TextField()
+
     body = models.TextField(
         null=True,
         blank=True,

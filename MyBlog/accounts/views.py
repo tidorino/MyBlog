@@ -4,24 +4,30 @@ from django.urls import reverse_lazy
 
 from MyBlog.accounts.forms import RegisterUserForm
 from MyBlog.accounts.models import Profile
+from MyBlog.articles.models import Article
 
 UserModel = get_user_model()
 
 
 class RegisterUserView(views.CreateView):
-    model = UserModel
+    # model = UserModel
     template_name = 'accounts/home-no-profile.html'
     form_class = RegisterUserForm
-
     success_url = reverse_lazy('index')
 
+    # TODO check if def post works instead of def form_valid:
     # this is necessary for redirect to 'index' not to 'log in' page after register
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        result = super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.created_by = self.request.user
+    #     result = super().form_valid(form)
+    #
+    #     login(self.request, self.object)
+    #     return result
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        login(request, self.object)
 
-        login(self.request, self.object)
-        return result
+        return response
 
 
 class LogInUserView(auth_views.LoginView):
@@ -35,6 +41,10 @@ class LogOutUserView(auth_views.LogoutView):
     next_page = reverse_lazy('index')
 
 
+# TODO https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/
+#  - how to extend user model with Profile
+#  and using signals !!!
+#  Also for Detail User is needed @login required !!
 class UserDetailsView(views.DetailView):
 
     template_name = 'accounts/profile-details-page.html'
@@ -46,6 +56,11 @@ class UserDetailsView(views.DetailView):
 
         # 'self.object' is pk selected obj. , 'self.req.user' is login obj.
         context['is_owner'] = self.request.user == self.object
+        user_article = Article.objects.filter(author__user_id=self.object.pk)
+        user_article_counts = user_article.count()
+        context['user_article'] = user_article
+        context['user_article_counts'] = user_article_counts
+
         # context['queryset'] = queryset
         return context
 

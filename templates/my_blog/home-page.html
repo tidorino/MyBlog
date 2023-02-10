@@ -28,11 +28,11 @@
                     <a class="post-title">{{ post.title }}</a>
                 {% endif %}
 
-                <p class="post-description">{{ post.body|slice:":100"}}</p>
+                <p class="post-description">{{ post.body|slice:':100'}}</p>
                 <a href="{% url 'details post' slug=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
 
-            <!-- Profile -->
-                {% include 'base/partials/profile_info.html' with post=post user=request.user%}
+{#            <!-- Profile -->#}
+{#                {% include 'base/partials/author_info.html' with post=post user=request.user%}#}
             </div>
         {% endfor %}
     </section>

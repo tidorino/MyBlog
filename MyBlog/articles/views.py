@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -24,9 +24,15 @@ class AddPostView(CreateView):
     # fields = ('category', 'title', 'slug', 'body', 'image_url')
     form_class = AddPostForm
 
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        login(request, self.object)
+
+        return response
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['user'] = self.object.author == self.request.user
+        context['article_auther'] = self.object == self.request.user
 
         return context
 

@@ -56,10 +56,7 @@ class EditUserForm(UpdateView):
     fields = '__all__'
 
 
-class UserDeleteView(DeleteView):
-    template_name = 'accounts/profile-delete-page.html'
-    model = UserModel
-    success_url = reverse_lazy('index')
+
 
 
 

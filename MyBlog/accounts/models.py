@@ -67,7 +67,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return self.full_name
+        return self.user.profile.full_name
 
     @property
     def full_name(self):
