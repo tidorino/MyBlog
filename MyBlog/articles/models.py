@@ -36,6 +36,7 @@ class Article(models.Model):
         # 'Restrict - we can't delete author as he is connected to article
         on_delete=models.CASCADE,
         related_name='articles',
+        null=False,
     )
 
     category = models.CharField(

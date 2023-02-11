@@ -27,11 +27,13 @@
                     {% endif %}
                 </div>
                 <div class="data">
+                    {% if request.user.is_staff%}
                     <!-- Total Number of Articles by the User -->
-                    {% if user_article.user_article_counts <= 1 %}
-                        <p>Article: {{ user_article_counts }}</p>
-                    {% else %}
-                        <p>Articles: {{ user_article_counts }}</p>
+                        {% if user_article.user_article_counts <= 1 %}
+                            <p>Article: {{ user_article_counts }}</p>
+                        {% else %}
+                            <p>Articles: {{ user_article_counts }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
                 {% if object.profile %}
