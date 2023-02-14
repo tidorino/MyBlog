@@ -11,7 +11,7 @@
             <!-- Title -->
             <h1>Add Article</h1>
             <br/><br/>
-            <form method="post" action="{% url 'add post' %}">
+            <form method="post" action="{% url 'add post' %}" enctype="multipart/form-data">
                 {{ form.as_p }}
                 <button class="sure-btn1" type="submit">Add</button>
                 {% csrf_token %}

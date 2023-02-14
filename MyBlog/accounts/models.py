@@ -61,7 +61,8 @@ class Profile(models.Model):
         blank=False,
     )
 
-    profile_image = models.URLField(
+    profile_image = models.ImageField(
+        upload_to='profile_img/',
         null=False,
         blank=False,
     )

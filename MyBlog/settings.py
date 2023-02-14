@@ -2,6 +2,7 @@ import os.path
 from pathlib import Path
 
 import cloudinary
+import cloudinary_storage
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'cloudinary_storage',
     'cloudinary',
 
     'MyBlog.my_blog',
@@ -122,13 +124,20 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles/')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-cloudinary.config(
-  cloud_name='tidorino',
-  api_key='735794518955165',
-  api_secret='v9IeNOCp8JDy8I-YzGGzwNaz11E',
-  secure=True,
-)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'tidorino',
+    'API_KEY': '735794518955165',
+    'API_SECRET': 'v9IeNOCp8JDy8I-YzGGzwNaz11E',
+    'SECURE': True,
+}
+# cloudinary.config(
+#   cloud_name='tidorino',
+#   api_key='735794518955165',
+#   api_secret='v9IeNOCp8JDy8I-YzGGzwNaz11E',
+#   secure=True,
+# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

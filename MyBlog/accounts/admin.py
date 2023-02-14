@@ -54,3 +54,7 @@ class BlogUserAdmin(auth_admin.UserAdmin):
         ("Important dates", {"fields": ("last_login", "date_joined")}),
     )
 
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass

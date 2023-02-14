@@ -50,7 +50,7 @@
                 <div class="statuses">
                     {% for article in user_article %}
                         <div class="post-box ">
-                            <img src="{{article.image_url}}"
+                            <img src="{{article.post_image }}"
                                 alt="{{article.slug}}" class="post-img">
                             <h2 class="category">{{ article.category }}</h2>
                             <a href="{% url 'details post' slug=article.slug %}" class="post-title">{{ article.title }}</a>

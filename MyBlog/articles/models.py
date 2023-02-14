@@ -22,6 +22,7 @@ class Category(Enum):
 class Article(models.Model):
     TITLE_MAX_LEN = 100
     CATEGORY_MAX_LEN = 20
+    SLUG_MAX_LEN = 100
 
     PUBLISHED = 'Published'
     DRAFT = 'Draft'
@@ -53,6 +54,7 @@ class Article(models.Model):
     # null=False, blank=True, if we don't write slug ,automatically to be 'null' and 'save'
     # function to generate 'slug'
     slug = models.SlugField(
+        max_length=SLUG_MAX_LEN,
         unique=True,
         null=False,
         blank=True,
@@ -68,7 +70,8 @@ class Article(models.Model):
     updated_on = models.DateTimeField(
         auto_now=True,
     )
-    image_url = models.URLField(
+    post_image = models.ImageField(
+        upload_to='articles/',
         null=False,
         blank=False,
     )
@@ -84,7 +87,7 @@ class Article(models.Model):
 
     # To do that, we will override the Article model save() method using a special function called slugify()
     # which helps us structure a slug from a given value.
-    # The if-statement stands to say that the slug field will NOT be changed
+    # The if-statement     stands to say that the slug field will NOT be changed
     # when the name of the article is changed:
     def save(self, *args, **kwargs):
         # create/update
@@ -98,5 +101,4 @@ class Article(models.Model):
 
     def __str__(self):
         return f'{self.title}' + '|' + f'{self.author}'
-
 

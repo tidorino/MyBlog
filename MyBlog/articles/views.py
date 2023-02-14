@@ -1,8 +1,8 @@
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, DeleteView, UpdateView
+from django.views.generic import DetailView, DeleteView, UpdateView
 
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.forms import AddPostForm
@@ -59,7 +59,7 @@ def add_post(request):
     if request.method == 'GET':
         form = AddPostForm()
     else:
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
             author = Profile.objects.filter(user=request.user).get()

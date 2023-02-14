@@ -13,7 +13,7 @@ class AddPostForm(forms.ModelForm):
         fields = '__all__'
         # fields = ('author', 'category', 'title', 'slug', 'body', 'image_url')
         labels = {
-            'image_url': 'Article image',
+            'post_image': 'Article image',
         }
 
     # def __init__(self, *args, **kwargs):
