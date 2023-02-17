@@ -1,11 +1,12 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
     <div class="edit-delete">
+        <br/><br/>
         <h2>Edit Article</h2>
 
         <form method="post" action="{% url 'edit post' slug=object.slug %}">
             {{ form.as_p }}
-
+            <br/><br/>
             <button class="sure-btn1" type="submit">Edit</button>
             <a href="{% url 'index' %}">
                 <button class="sure-btn1" type="submit">Back</button>

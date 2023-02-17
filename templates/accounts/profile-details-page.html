@@ -8,7 +8,7 @@
         <div class="profile1-data">
             <div class="profile1-img">
                 <div class="image">
-                    <img src="{{object.profile.profile_image}}"
+                    <img src="{{object.profile.profile_image.url}}"
                          alt="{{ object.profile.full_name }}" class="profile1-img" >
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="statuses">
                     {% for article in user_article %}
                         <div class="post-box ">
-                            <img src="{{article.post_image }}"
+                            <img src="{{article.post_image.url }}"
                                 alt="{{article.slug}}" class="post-img">
                             <h2 class="category">{{ article.category }}</h2>
                             <a href="{% url 'details post' slug=article.slug %}" class="post-title">{{ article.title }}</a>

@@ -5,7 +5,7 @@
 {% block page_content %}
     <!-- Registration -->
     <section id="container prof">
-        <form method="post" action="{% url 'register user' %}">
+        <form method="post" action="{% url 'register user' %}" enctype="multipart/form-data">
             <div class="border-box prof">
                 <h2 class="form-title">Profile</h2>
                 {{ form.as_p }}

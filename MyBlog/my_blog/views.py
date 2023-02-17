@@ -43,6 +43,7 @@ def index(request):
         'no_profile': True,
     }
 
+
     return render(request, 'my_blog/home-page.html', context)
 
 

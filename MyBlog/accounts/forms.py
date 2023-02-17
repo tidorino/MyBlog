@@ -12,7 +12,7 @@ UserModel = get_user_model()
 class RegisterUserForm(UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
-    profile_image = forms.URLField()
+    profile_image = forms.ImageField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,7 +21,7 @@ class RegisterUserForm(UserCreationForm):
         self.fields['password2'].widget.attrs.update({'placeholder': 'Repeat password'})
         self.fields['first_name'].widget.attrs.update({'placeholder': 'First name'})
         self.fields['last_name'].widget.attrs.update({'placeholder': 'Last name'})
-        self.fields['profile_image'].widget.attrs.update({'placeholder': 'Profile image url'})
+        self.fields['profile_image'].widget.attrs.update({'placeholder': 'Profile image'})
 
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
@@ -33,6 +33,7 @@ class RegisterUserForm(UserCreationForm):
     # save with data for profile
     def save(self, commit=True):
         user = super().save(commit=commit)
+        user.email = self.cleaned_data['email']
         first_name = self.cleaned_data['first_name']
         last_name = self.cleaned_data['last_name']
         profile_image = self.cleaned_data['profile_image']

@@ -63,8 +63,8 @@ class Profile(models.Model):
 
     profile_image = models.ImageField(
         upload_to='profile_img/',
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):

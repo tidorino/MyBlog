@@ -10,7 +10,17 @@ UserModel = get_user_model()
 @admin.register(UserModel)
 class BlogUserAdmin(auth_admin.UserAdmin):
     ordering = ('email',)
-    list_display = ['email', 'date_joined', 'last_login', 'is_staff', 'is_superuser']
+
+    # Display user group in admin interface:
+    def group(self, user):
+        groups = []
+        for group in user.groups.all():
+            groups.append(group.name)
+        return ' '.join(groups)
+
+    group.short_description = 'Groups'
+
+    list_display = ['email', 'date_joined', 'last_login', 'is_staff', 'is_superuser', 'group']
     list_filter = ()
     search_fields = ('email',)
     add_form = RegisterUserForm
