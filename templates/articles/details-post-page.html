@@ -6,18 +6,24 @@
     <div class="post-content post-container">
 
         <h2 class="heading"></h2>
-        <h2 class="category">{{ object.category }}</h2>
+        <h2 class="category">{{ article.category }}</h2>
         <div class="thumbnail">
-            <img src="{{ object.post_image.url }}" alt="{{ object.slug }}" class="img1">
+            <img src="{{ article.post_image.url }}" alt="{{ article.slug }}" class="img1">
         </div>
 <!-- blog section -->
 
         <div class="blog-card">
 {#        <img src="#" class="blog-image" alt="">#}
-            <h1 class="blog-title">{{ object.title}}</h1>
-            <p class="blog-overview">{{ object.body}}</p>
+            <h1 class="blog-title">{{ article.title}}</h1>
+            <p class="blog-overview">{{ article.body}}</p>
 
             <!-- Author Info -->
+{#                <div class="profile">#}
+{#                    <img src="{{article.author.profile_image.url}}"#}
+{#                         alt="{{ article.author.full_name }}" class="profile-img">#}
+{#                    <span class="profile-name">{{ article.author.full_name }} |#}
+{#                        {{ article.created_on}}</span>#}
+{#                </div>#}
             {% include 'base/partials/author_info.html' %}
 
             <div>

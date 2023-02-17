@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% load static %}
+{% load has_group %}
 {% block page_content %}
 
     <div class="profile1">
@@ -27,7 +28,7 @@
                     {% endif %}
                 </div>
                 <div class="data">
-                    {% if request.user.is_staff%}
+                    {% if request.user.is_staff or request.user|has_group:"Editors"%}
                     <!-- Total Number of Articles by the User -->
                         {% if user_article.user_article_counts <= 1 %}
                             <p>Article: {{ user_article_counts }}</p>

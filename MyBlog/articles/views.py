@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, DeleteView, UpdateView
+from django.views.generic import DetailView, DeleteView, UpdateView, CreateView
 
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.forms import AddPostForm
@@ -17,6 +17,7 @@ class DetailsPostView(DetailView):
     model = Article
 
 
+# TODO: to clear the old code
 # def add_post(request):
 #     if request.method == 'POST':
 #         form = AddPostForm(request.POST)
@@ -33,12 +34,7 @@ class DetailsPostView(DetailView):
 #         'form': form,
 #     }
 #     return render(request, 'articles/add-post-page.html', context)
-# class AddPostView(CreateView):
-#
-#     template_name = 'articles/add-post-page.html'
-#     model = Article
-#     # fields = ('category', 'title', 'slug', 'body', 'image_url')
-#     form_class = AddPostForm
+
 #
 #     def post(self, request, *args, **kwargs):
 #         response = super().post(request, *args, **kwargs)
@@ -53,26 +49,34 @@ class DetailsPostView(DetailView):
 #         return context
 #
 #     success_url = reverse_lazy('index')
-@login_required
-def add_post(request):
+# @login_required
+# def add_post(request):
+#
+#     if request.method == 'GET':
+#         form = AddPostForm()
+#     else:
+#         form = AddPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             article = form.save(commit=False)
+#             author = Profile.objects.get(id=Article.author.id)
+#
+#             article.save()
+#             return redirect('index')
+#
+#     context = {
+#         'form': form,
+#     }
+#
+#     return render(request, 'articles/add-post-page.html', context)
+#
 
-    if request.method == 'GET':
-        form = AddPostForm()
-    else:
-        form = AddPostForm(request.POST, request.FILES)
-        if form.is_valid():
-            article = form.save(commit=False)
-            author = Profile.objects.filter(user=request.user).get()
-            Article.author = author
+class AddPostView(CreateView):
+    template_name = 'articles/add-post-page.html'
+    model = Article
+    form_class = AddPostForm
 
-            article.save()
-            return redirect('index')
+    success_url = reverse_lazy('index')
 
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'articles/add-post-page.html', context)
 
 # TODO to see code below how to rewrite get and post in CBV:
 # class FileUploadView(View):
