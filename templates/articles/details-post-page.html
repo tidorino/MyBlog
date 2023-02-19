@@ -10,20 +10,12 @@
         <div class="thumbnail">
             <img src="{{ article.post_image.url }}" alt="{{ article.slug }}" class="img1">
         </div>
-<!-- blog section -->
-
+        <!-- blog section -->
         <div class="blog-card">
 {#        <img src="#" class="blog-image" alt="">#}
             <h1 class="blog-title">{{ article.title}}</h1>
             <p class="blog-overview">{{ article.body}}</p>
 
-            <!-- Author Info -->
-{#                <div class="profile">#}
-{#                    <img src="{{article.author.profile_image.url}}"#}
-{#                         alt="{{ article.author.full_name }}" class="profile-img">#}
-{#                    <span class="profile-name">{{ article.author.full_name }} |#}
-{#                        {{ article.created_on}}</span>#}
-{#                </div>#}
             {% include 'base/partials/author_info.html' %}
 
             <div>

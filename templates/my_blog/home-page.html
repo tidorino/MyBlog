@@ -12,7 +12,7 @@
 
     <!-- Posts -->
     <section class="post container">
-        {% for post in posts %}
+        {% for post in page_object %}
 
         <!-- Post Box 1 -->
             <div class="post-box ">
@@ -34,6 +34,9 @@
             </div>
         {% endfor %}
     </section>
+
+    {% include 'base/partials/pagination.html' %}
+
     {% block bottombar %}
     {% include 'base/bottombar.html' %}
     {% endblock bottombar %}

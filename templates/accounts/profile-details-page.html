@@ -49,7 +49,7 @@
         {% if user_article %}
             <h2>{{ object.profile }} Articles:</h2>
                 <div class="statuses">
-                    {% for article in user_article %}
+                    {% for article in page_object %}
                         <div class="post-box ">
                             <img src="{{article.post_image.url }}"
                                 alt="{{article.slug}}" class="post-img">
@@ -60,6 +60,9 @@
                         </div>
                     {% endfor %}
                 </div>
+
+                {% include 'base/partials/pagination.html' %}
+
         {% endif %}
     </div>
 {% endblock %}

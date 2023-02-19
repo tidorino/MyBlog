@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy
@@ -39,6 +40,16 @@ class UserDetailsView(views.DetailView):
 
     template_name = 'accounts/profile-details-page.html'
     model = UserModel
+    articles_paginate_by = 3
+
+    def get_articles_page(self):
+        return self.request.GET.get('page', 1)
+
+    def get_paginated_articles(self):
+        page = self.get_articles_page()
+        articles = self.object.profile.articles.all()
+        paginator = Paginator(articles, self.articles_paginate_by)
+        return paginator.get_page(page)
 
     def get_context_data(self, **kwargs):
         # queryset = Article.objects.filter(status=1).order_by('-created_on')
@@ -51,7 +62,7 @@ class UserDetailsView(views.DetailView):
         context['user_article'] = user_article
         context['user_article_counts'] = user_article_counts
 
-        # context['queryset'] = queryset
+        context['page_object'] = self.get_paginated_articles()
         return context
 
 

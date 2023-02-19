@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -29,20 +30,33 @@ UserModel = get_user_model()
 {% endfor %}
 </div>
 """
+"""
+    def get_articles_page(self):
+        return self.request.GET.get('page', 1)
+
+    def get_paginated_articles(self):
+        page = self.get_articles_page()
+        articles = self.object.profile.articles.all()
+        paginator = Paginator(articles, self.articles_paginate_by)
+        return paginator.get_page(page)
+"""
 
 
 def index(request):
     user = UserModel.objects.all()
     posts = Article.objects.all()
     profile = Profile.objects.all()
+    paginator = Paginator(posts, 6)
+    page = request.GET.get('page', 1)
+    page_object = paginator.get_page(page)
 
     context = {
         'posts': posts,
         'user': user,
         'profile': profile,
         'no_profile': True,
+        'page_object': page_object,
     }
-
 
     return render(request, 'my_blog/home-page.html', context)
 
