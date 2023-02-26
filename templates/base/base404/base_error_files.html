@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog </title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <!-- Box Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav container">
+                <div class="nav-button">
+                    <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section class="home" id="home">
+        <div class="home-text container">
+            <h2 class="home-title">Blog</h2>
+            <span class="home-subtitle">Something that I want to write</span>
+        </div>
+    </section>
+
+    {% block page_error_content %}
+    {% endblock %}
+    <!-- Footer -->
+    <div class="footer container">
+        <p>&#169; Teodora Trendafilova/ Tidorino 2022 All Rights Reserved</p>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
+            <a href="#"><i class='bx bx-envelope'></i></a>
+        </div>
+    </div>
+    <!-- JQuery Link -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+     crossorigin="anonymous"></script>
+
+
+    <!-- Link to JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
