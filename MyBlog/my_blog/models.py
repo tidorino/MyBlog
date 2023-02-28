@@ -1,7 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from MyBlog.articles.models import Article
+
 UserModel = get_user_model()
+
 
 # class PostLike(models.Model):
 #     post = models.ForeignKey(
@@ -10,6 +13,11 @@ UserModel = get_user_model()
 #         null=False,
 #         blank=True,
 #     )
+#     user = models.ForeignKey(
+#         UserModel,
+#         on_delete=models.RESTRICT,
+#     )
+
 
 
 # class InfoAboutApp(models.Model):

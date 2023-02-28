@@ -18,7 +18,6 @@ def save_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 
-
 @receiver(post_save, sender=UserModel)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()

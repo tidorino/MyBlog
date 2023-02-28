@@ -3,9 +3,10 @@ from enum import Enum
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
-from cloudinary import models as cloudinary_models
 
 from MyBlog.accounts.models import Profile
+from MyBlog.core.validators import validate_max_image_size
+
 
 UserModel = get_user_model()
 
@@ -74,6 +75,9 @@ class Article(models.Model):
         upload_to='articles/',
         null=False,
         blank=False,
+        validators=(
+            validate_max_image_size,
+        )
     )
     status = models.IntegerField(
 

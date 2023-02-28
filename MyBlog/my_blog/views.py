@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
+
 from django.shortcuts import render
 
 from MyBlog.accounts.models import Profile
@@ -29,9 +30,4 @@ def index(request):
     return render(request, 'my_blog/home-page.html', context)
 
 
-def view_404(request, *args, **kwargs):
-    return render(request, '404.html')
 
-
-def view_500(request, *args, **kwargs):
-    return render(request, '500.html')

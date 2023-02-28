@@ -22,25 +22,6 @@ class AddPostView(CreateView):
     success_url = reverse_lazy('index')
 
 
-# TODO to see code below how to rewrite get and post in CBV:
-# class FileUploadView(View):
-#     form_class = MyForm
-#     success_url = reverse_lazy('home')
-#     template_name = 'file_upload.html'
-#
-#     def get(self, request, *args, **kwargs):
-#         form = self.form_class()
-#         return render(request, self.template_name, {'form': form})
-#
-#     def post(self, request, *args, **kwargs):
-#         form = self.form_class(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(self.success_url)
-#         else:
-#             return render(request, self.template_name, {'form': form})
-
-
 class EditPostView(UpdateView):
     template_name = 'articles/edit-post-page.html'
     model = Article

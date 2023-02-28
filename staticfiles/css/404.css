@@ -22,7 +22,7 @@
 
 .not-found button {
     color: white;
-    background-color: rgb(0, 132, 255);
+    background-color: var(--second-color);
     border: none;
     border-radius: 3px;
     padding: 10px;

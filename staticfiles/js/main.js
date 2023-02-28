@@ -13,7 +13,6 @@ $(document).ready(function(){
     // Add active to btn
     $('.filter-item').click(function(){
         $(this).addClass('active-filter').siblings().removeClass('active-filter');
-
     });
 });
 

@@ -42,3 +42,25 @@
     margin: 0 10px;
 }
 
+.actionBtns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actionBtns svg {
+    cursor: pointer;
+}
+
+.actionBtns .left svg {
+    margin-right: 8px;
+}
+
+.likes {
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 14px;
+    cursor: default;
+    color: #4d4d4f;
+}
+

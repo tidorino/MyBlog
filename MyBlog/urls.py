@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from MyBlog.my_blog import views
+from MyBlog.core.exception_handler import view_500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,8 +12,8 @@ urlpatterns = [
     path('articles/', include('MyBlog.articles.urls')),
 ]
 
-handler404 = views.view_404
-handler500 = views.view_500
+# handler404 = page_not_found_view
+handler500 = view_500
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
