@@ -1,4 +1,4 @@
-{% extends 'base/base404/base_error_files.html' %}
+{% extends 'base/base_error_files.html' %}
 
 {% load static %}
 
@@ -22,6 +22,10 @@
         <a href="{% url 'index' %}">
             <button>Return to MyBlog</button>
         </a>
+    </div>
+    <div class="second-option">
+        <p>Have an account? <a href="{% url 'login user' %}">Log in</a></p>
+
     </div>
 
     <!-- End 404 page -->
