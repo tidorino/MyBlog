@@ -12,7 +12,7 @@ urlpatterns = [
     path('articles/', include('MyBlog.articles.urls')),
 ]
 
-# handler404 = page_not_found_view
+handler404 = page_not_found_view
 handler500 = view_500
 
 if settings.DEBUG:
