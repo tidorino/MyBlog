@@ -1,52 +1,96 @@
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from MyBlog.accounts.models import Profile
+from MyBlog.core.validators import validate_only_letters
 
 UserModel = get_user_model()
 
 
-class ProfileModelTests(TestCase):
+class TestCustomerUser(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = UserModel.objects.create_user(email='test_user@gmail.com', password='secret123')
 
-    # FIRST_NAME = 'Teodora'
-    # LAST_NAME = 'Ivanov'
-    # PROFILE_IMAGE = 'profile.jpg'
-    #
-    # @classmethod
-    # def setUpTestData(cls):
-    #     UserModel.objects.create()
-    #
-    def setUp(self):
+    def test_create_user(self):
+        self.assertIsInstance(self.user, UserModel)
+        self.assertFalse(self.user.is_staff)
+        self.assertEqual(self.user.email, 'test_user@gmail.com')
+
+    def test_create_super_user(self):
+        user = UserModel.objects.create_superuser(email='testt_user@gmail.com', password='secret123')
+        self.assertIsInstance(user, UserModel)
+        self.assertTrue(user.is_staff)
+        self.assertEqual(user.email, 'testt_user@gmail.com')
+
+    def test__when_no_email_raise_error(self):
+
+        self.assertRaises(ValueError, UserModel.objects.create_user, email='', password='secret123')
+
+    def test__str_representation_of_user(self):
+        expected_response = 'test_user@gmail.com'
+        self.assertEqual(expected_response, str(self.user))
+
+
+class ProfileModelTests(TestCase):
+    def setUp(self) -> None:
         self.user = UserModel.objects.create(email='test_user@gmail.com', password='secret123')
-        # profile = UserModel.objects.last().profile
-        # self.profile = Profile(profile, self.FIRST_NAME, self.LAST_NAME, self.PROFILE_IMAGE)
+        self.profile = Profile(
+            user=self.user,
+            first_name='Teddy',
+            last_name='Tooo',
+            profile_image='image.jpg',
+        )
+
+    # The tearDown method is executed at the end of each test:
+    # it deletes the user instance
+    def tearDown(self):
+        self.user.delete()
+
+    def test_profile_creation(self):
+
+        self.assertIsInstance(self.user.profile, Profile)
+
+        # Call the save method of the user to activate the signal
+        # again, and check that it doesn't try to create another
+        # profile instance
+
+        self.user.save()
+        self.assertIsInstance(self.user.profile, Profile)
 
     def test_profile_save__when_first_name_only_letters__expect_correct_result(self):
-        pass
 
-        # profile = Profile.objects.create(
-        #     user=self.user, first_name='Teddy', last_name='Trifon', profile_image='teddy.jpg'
-        # )
-        # # Act
-        # profile.full_clean()
-        # profile.save()
-        #
-        # # Assert
-        # self.assertIsNotNone(profile.pk)
+        self.user.full_clean()
+        self.assertEqual(self.profile.first_name, 'Teddy')
 
     def test_profile_save__when_first_name_not_only_letters__expect_to_raise(self):
-        pass
+
+        profile_first_name = 'Teddy22'
+        self.profile.first_name = profile_first_name
+        self.user.full_clean()
+
+        with self.assertRaises(ValidationError) as context:
+            validate_only_letters(self.profile.first_name)
+        self.assertRaisesMessage('Only letters are allowed', context.exception)
 
     def test_profile_save__when_last_name_only_letters__expect_correct_result(self):
-        pass
+
+        self.user.full_clean()
+
+        self.assertEqual(self.profile.last_name, 'Tooo')
 
     def test_profile_save__when_last_name_not_only_letters__expect_to_raise(self):
-        pass
+        profile_last_name = 'Tooo22'
+        self.profile.last_name = profile_last_name
+        self.user.full_clean()
+
+        with self.assertRaises(ValidationError) as context:
+            validate_only_letters(self.profile.last_name)
+        self.assertRaisesMessage('Only letters are allowed', context.exception)
 
     def test_str_representation_of_profile(self):
-        pass
-        # user = UserModel.objects.create(email='test_user@gmail.com', password='secret123')
-        # profile = Profile.objects.create(
-        #     first_name='Teddy', last_name='Trifon', profile_image='teddy.jpg', user_id=self.user.id)
-        #
-        # self.assertEqual('Teddy Trifon', str(profile.fullname))
+        profile_full_name = 'Teddy Tooo'
+        expected_response = profile_full_name
+        self.assertEqual(expected_response, str(self.profile.full_name))
+
