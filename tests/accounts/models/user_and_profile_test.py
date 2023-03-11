@@ -28,11 +28,6 @@ class ProfileModelTests(TestCase):
             profile_image='image.jpg',
         )
 
-    # The tearDown method is executed at the end of each test:
-    # it deletes the user instance
-    def tearDown(self):
-        self.user.delete()
-
     def test_profile_creation(self):
 
         self.assertIsInstance(self.user.profile, Profile)
