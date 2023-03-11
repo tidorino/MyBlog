@@ -26,3 +26,15 @@ def created_articles_for_user(profile, count=5):
         article.save()
         result.append(article)
     return result
+
+
+def create_article(profile):
+    article = Article(
+        author=create_profile(profile),
+        category='Courses',
+        title='Title',
+        body='Body',
+        post_image='image.jpg',
+    )
+    article.save()
+    return article

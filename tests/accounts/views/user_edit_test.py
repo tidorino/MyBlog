@@ -1,7 +1,7 @@
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 
 from tests.utils.creation_utils import create_profile
-from tests.accounts.views.BaseTestCase import TestCaseBase
+from tests.utils.BaseTestCase import TestCaseBase
 
 
 class UserEditViewTests(TestCaseBase):

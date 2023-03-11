@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 
-from tests.accounts.views.BaseTestCase import TestCaseBase
+from tests.utils.BaseTestCase import TestCaseBase
 from tests.utils.creation_utils import create_profile, created_articles_for_user
 
 UserModel = get_user_model()

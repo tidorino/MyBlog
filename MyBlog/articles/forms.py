@@ -14,8 +14,15 @@ class AddPostForm(forms.ModelForm):
             'post_image': 'Article image',
         }
 
+    # TODO:
     # def clean_author(self):
     #     author = self.cleaned_data.get('author')
     #     if not author:
     #         author = self.author.user
     #     return author
+
+    # def item(request, item_id):
+    #     try:
+    #         item = Item.objects.get(pk=int(item_id))
+    #     except (ValueError, Item.DoesNotExist):
+    #         raise Http404
