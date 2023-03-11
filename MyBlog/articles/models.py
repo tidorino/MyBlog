@@ -29,8 +29,8 @@ class Article(models.Model):
     DRAFT = 'Draft'
 
     STATUS = (
-        (PUBLISHED, 'Published'),
-        (DRAFT, 'Draft'),
+        (PUBLISHED, 1),
+        (DRAFT, 0),
     )
 
     author = models.ForeignKey(

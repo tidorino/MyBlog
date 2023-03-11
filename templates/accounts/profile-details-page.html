@@ -9,8 +9,11 @@
         <div class="profile1-data">
             <div class="profile1-img">
                 <div class="image">
-                    <img src="{{object.profile.profile_image.url}}"
-                         alt="{{ object.profile.full_name }}" class="profile1-img" >
+                    {% if object.profile.profile_image %}
+                        <img src="{{object.profile.profile_image.url}}"
+                             alt="{{ object.profile.full_name }}"
+                             class="profile1-img" >
+                    {% endif %}
                 </div>
             </div>
             <div class="personal">
@@ -28,7 +31,7 @@
                     {% endif %}
                 </div>
                 <div class="data">
-                    {% if request.user.is_staff or request.user|has_group:"Editors"%}
+                    {% if request.user.is_staff or request.user|has_group:"Editors" %}
                     <!-- Total Number of Articles by the User -->
                         {% if user_article.user_article_counts <= 1 %}
                             <p>Article: {{ user_article_counts }}</p>

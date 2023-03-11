@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='article',
             name='status',
-            field=models.IntegerField(blank=True, choices=[('Published', 'Published'), ('Draft', 'Draft')],
-                                      default='Published', null=True),
+            field=models.IntegerField(blank=True, choices=[('Published', 1), ('Draft', 0)],
+                                      default=1, null=True),
         ),
         migrations.AddField(
             model_name='article',

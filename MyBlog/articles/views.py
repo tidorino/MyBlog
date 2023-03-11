@@ -44,3 +44,5 @@ class DeletePostView(DeleteView):
 
 # def published_article(self):
 #     return self.category.filter(status=True)
+
+# TODO -> https://stackoverflow.com/questions/65276895/querying-a-user-profile-model

@@ -14,3 +14,8 @@ class AddPostForm(forms.ModelForm):
             'post_image': 'Article image',
         }
 
+    # def clean_author(self):
+    #     author = self.cleaned_data.get('author')
+    #     if not author:
+    #         author = self.author.user
+    #     return author

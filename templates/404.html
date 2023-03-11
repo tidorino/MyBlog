@@ -17,15 +17,15 @@
         <h3>Error 404 - page not found.</h3>
         <!-- Link to Home Page -->
     </div>
-    <div>
-        <a href="{% url 'index' %}">
-            <button>Return to MyBlog</button>
+    <div class="second-option">
+        <a href="#">
+            <button1>Return to MyBlog:</button1>
         </a>
     </div>
     <div class="second-option">
+        <p>Return to MyBlog? <a href="{% url 'index' %}">Home</a></p>
+
         <p>Have an account? <a href="{% url 'login user' %}">Log in</a></p>
 
     </div>
-
-    <!-- End 404 page -->
 {% endblock %}

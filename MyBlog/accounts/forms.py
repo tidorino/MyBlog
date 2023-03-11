@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views.generic import UpdateView, DeleteView
+
+from django.views.generic import UpdateView
 
 from MyBlog.accounts.models import Profile
 
@@ -12,7 +12,7 @@ UserModel = get_user_model()
 class RegisterUserForm(UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
-    profile_image = forms.ImageField()
+    profile_image = forms.ImageField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,10 +55,3 @@ class EditUserForm(UpdateView):
     model = Profile
     template_name = 'accounts/profile-edit-page.html'
     fields = '__all__'
-
-
-
-
-
-
-

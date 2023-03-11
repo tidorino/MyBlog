@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from MyBlog.core.exception_handler import view_500
+from MyBlog.core.exception_handler import view_500, page_not_found_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),

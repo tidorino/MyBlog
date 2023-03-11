@@ -5,7 +5,7 @@ from django.test import TestCase
 UserModel = get_user_model()
 
 
-class TestCustomerUser(TestCase):
+class TestCustomerUserManager(TestCase):
     @classmethod
     def setUpTestData(cls):
 
