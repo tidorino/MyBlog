@@ -5,27 +5,29 @@
 
     <!-- 404 page -->
     <div class="not-found-img">
-        <img src="{% static 'images/404-page-not-found_new.jpg' %}"
-             alt="404 not found ">
+{#        <img src="{% static 'images/404-page-not-found_new.jpg' %}"#}
+{#             alt="404 not found ">#}
     </div>
-
     <div class="not-found">
         <br><br>
-        <h1>
+        <h1 style="color: var(--text-color)">
             Uh oh,<br> something broke.
         </h1>
-        <h3>Error 404 - page not found.</h3>
+        <h3 style="color: var(--text-color)">Error 404 - page not found.</h3>
         <!-- Link to Home Page -->
     </div>
     <div class="second-option">
         <a href="#">
-            <button1>Return to MyBlog:</button1>
+            <p style="color: var(--text-color)">***</p>
         </a>
     </div>
     <div class="second-option">
-        <p>Return to MyBlog? <a href="{% url 'index' %}">Home</a></p>
+        <p>Return to MyBlog?
+            <a href="{% url 'index' %}"
+               style="color: var(--second-color)">Home</a></p>
 
-        <p>Have an account? <a href="{% url 'login user' %}">Log in</a></p>
-
+        <p>Have an account?
+            <a href="{% url 'login user' %}"
+               style="color: var(--second-color)">Log in</a></p>
     </div>
 {% endblock %}

@@ -5,8 +5,14 @@
       transform: translate(-50%, -50%);
     }
 .emoji {
-    font-size: 9em;
+    font-size: 7em;
     text-align: center;
+    width: 12rem;
+}
+.unicorn {
+    width: 50%;
+    display: flex;
+    margin-left: 250%;
 }
 .title {
     font-size: 3em;

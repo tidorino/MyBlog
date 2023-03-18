@@ -8,7 +8,6 @@
     box-sizing: border-box;
 
 }
-
 :root {
     --container-color: #1a1e21;
     --second-color: #fd8f44;
@@ -16,7 +15,6 @@
     --bg-color: #fff;
     --nav-bar: #383b38;
 }
-
 ::selection{
     color: var(--bg-color);
     background: var(--second-color);

@@ -18,17 +18,15 @@ UserModel = get_user_model()
 #         on_delete=models.RESTRICT,
 #     )
 
+class InfoAboutApp(models.Model):
+    MAX_LEN_TITLE = 40
 
-
-# class InfoAboutApp(models.Model):
-#     MAX_LEN_APP_NAME = 40
-#
-#     app_name = models.CharField(
-#         max_length=MAX_LEN_APP_NAME,
-#         null=False,
-#         blank=False,
-#     )
-#     user = models.ForeignKey(
-#         UserModel,
-#         on_delete=models.CASCADE,
-#     )
+    title = models.CharField(
+        max_length=MAX_LEN_TITLE,
+        null=False,
+        blank=False,
+    )
+    body = models.TextField(
+        null=True,
+        blank=True,
+    )

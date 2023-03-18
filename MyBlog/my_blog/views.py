@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.models import Article
-
+from MyBlog.my_blog.models import InfoAboutApp
 
 UserModel = get_user_model()
 
@@ -17,6 +17,7 @@ def index(request):
     paginator = Paginator(posts, 6)
     page = request.GET.get('page', 1)
     page_object = paginator.get_page(page)
+    info_app = InfoAboutApp.objects.all()
 
     context = {
         'posts': posts,
@@ -24,10 +25,10 @@ def index(request):
         'profile': profile,
         'no_profile': True,
         'page_object': page_object,
+        'info_app': info_app,
         # 'liked_posts': liked_posts,
     }
 
     return render(request, 'my_blog/home-page.html', context)
-
 
 

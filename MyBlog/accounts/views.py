@@ -17,6 +17,7 @@ class RegisterUserView(views.CreateView):
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
+
         login(request, self.object)
         return response
 
@@ -52,9 +53,7 @@ class UserDetailsView(views.DetailView):
         return paginator.get_page(page)
 
     def get_context_data(self, **kwargs):
-        # queryset = Article.objects.filter(status=1).order_by('-created_on')
         context = super().get_context_data(**kwargs)
-
         # 'self.object' is pk selected obj., 'self.req.user' is login obj.
         context['is_owner'] = self.request.user == self.object
         user_article = Article.objects.filter(author__user_id=self.object.pk)

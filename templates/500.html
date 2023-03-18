@@ -1,22 +1,20 @@
 {% extends 'base/base_error_files.html' %}
 
 {% load static %}
-
 {% block page_error_content %}
     <!-- 500 page -->
     <body class="centered">
         <div class="emoji">
-            <img src="{% static 'images/unicorn.gif' %}"
-                 alt="500 server error"
-                 width=250>
+            <img class="unicorn" src="{% static 'images/unicorn.gif' %}"
+                 alt="500 server error">
         </div>
-        <br><br>
+        <br>
         <p class="title">Ooooops!</p>
+        <br><br>
         <p class="text">Looks like our server crashed 🙀<br>
             We're working on a quick fix, come back soon.</p>
-
     <!-- Link to Home Page -->
-        <br><br>
+        <br>
         <a href="{% url 'index' %}">
             <button>Return to MyBlog</button>
         </a>

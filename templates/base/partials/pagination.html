@@ -8,8 +8,8 @@
             Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}.
         </span>
         {% if page_object.has_next %}
-            <a href="?page={{ page_object.next_page_number }}">next</a>
-            <a href="?page={{ page_object.paginator.num_pages }}">last &raquo;</a>
+            <a href="?page={{ page_object.next_page_number }}" style="color:black;">next</a>
+            <a href="?page={{ page_object.paginator.num_pages }}" style="color:black;">last &raquo;</a>
         {% endif %}
     </span>
 </div>

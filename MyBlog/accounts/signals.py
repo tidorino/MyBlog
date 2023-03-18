@@ -13,11 +13,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 
-# @receiver(post_save, sender=UserModel)
-# def save_profile(sender, instance, created, **kwargs):
-#     instance.profile.save()
-
-
 @receiver(post_save, sender=UserModel)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()

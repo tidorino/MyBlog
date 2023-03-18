@@ -1,32 +1,21 @@
 .profile1 {
     margin: 140px 35% 0 38%;
 }
-
 .profile1-data {
     display: flex;
     gap: 130px;
     justify-content: center;
 }
-
 .profile1_img img {
     vertical-align: middle;
     width: 250px;
     height: 250px;
     border-radius: 50%;
     object-fit: contain;
-    /*width: 150px;*/
-    /*padding: 5px;*/
-    /*!*height: 175px;*!*/
-    /*!*margin-top: 10px;*!*/
-    /*border-radius: 10px;*/
-    /*!*object-fit: cover;*!*/
-    /* border: 1px solid #ddd;*/
 }
-
 .profile a {
     color: black;
 }
-
 .profile .footer {
     display: flex;
     justify-content: center;
@@ -35,16 +24,13 @@
     font-size: 12px;
     font-family: sans-serif;
 }
-
 .delete {
     display: block;
 }
-
 .no-posts-holder {
     display: flex;
     justify-content: center;
 }
-
 .no-posts {
     width: 70% !important;
     height: auto !important;
@@ -52,7 +38,6 @@
     border: none !important;
     box-shadow: none !important;
 }
-
 .personal .edit {
     display: flex;
     gap: 20px;
@@ -60,52 +45,43 @@
     font-size: 20px;
     margin-bottom: 15px;
 }
-
 .personal .edit p {
     white-space: nowrap;
 }
-
 .personal .edit-img {
     width: 20px;
     margin-top: 8px;
 }
-
 .personal .bin-img {
     width: 20px;
     margin-left: -10px;
     margin-top: 8px;
 }
-
 .personal .data {
     display: flex;
     margin-bottom: 15px;
 }
-
 .personal .data span {
     margin-right: 5px;
     font-size: 20px;
 }
-
 .personal .data p {
     margin-right: 15px;
     margin-top: 5px;
 }
-
 .names {
     margin-bottom: 5px;
     font-family: 'Oswald', sans-serif;
 }
-
 .email {
     margin-bottom: 5px;
 }
-
 .statuses {
     margin-bottom: 30px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    /*justify-content: start;*/
     padding: 20px 0;
     overflow: auto;
     max-width: 850px;
@@ -138,24 +114,20 @@
     justify-content: center;
     border: 2px solid white;
 }
-
 .statuses .status img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 .step-links {
     text-shadow: 1px 1px #4b4848;
 }
-
 .step-links a:hover {
     text-shadow: none;
 }

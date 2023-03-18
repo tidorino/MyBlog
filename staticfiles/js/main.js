@@ -1,6 +1,6 @@
 // Filter JS
 $(document).ready(function(){
-    $('.filter-item').click(function(){
+    $('.filter-item').click(function() {
         const value = $(this).attr('data-filter');
         if (value === 'all') {
             $('.post-box').show('100');
@@ -15,6 +15,7 @@ $(document).ready(function(){
         $(this).addClass('active-filter').siblings().removeClass('active-filter');
     });
 });
+
 
 // Header BackGround Change On Scroll
 let header = document.querySelector('header');

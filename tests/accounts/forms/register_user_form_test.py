@@ -46,7 +46,22 @@ class RegisterUserFormTest(TestCase):
         self.assertEqual(form.fields['password1'].help_text, None)
         self.assertEqual(form.fields['password2'].help_text, None)
 
+    def test_register_user_form__when_username_already_exist(self):
 
+        form_data1 = {
+            'email': 'test@gmail.com',
+            'password1': 'isthislongenough',
+            'password2': 'isthislongenough',
+            'first_name': 'Tedy',
+            'last_name': 'Tooo',
+            'profile_image': 'image2.jpg',
+        }
+
+        form = RegisterUserForm(self.form_data)
+        form1 = RegisterUserForm(form_data1)
+        print(form1.errors)
+        self.assertTrue(form.is_valid())
+        self.assertTrue(form1.is_valid())
 
 
 

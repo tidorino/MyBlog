@@ -15,10 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n87#k^1p1q19kb4ipl^+c*5n&de&gzitimi@8#@x@tx*m*n^jt'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# TODO Check --> SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO remove when release
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -30,8 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'cloudinary_storage',
+
     'cloudinary',
 
     'MyBlog.my_blog',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'MyBlog.middlewares.handle_exception',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,6 +123,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
+# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles/')
@@ -131,6 +134,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '735794518955165',
     'API_SECRET': 'v9IeNOCp8JDy8I-YzGGzwNaz11E',
     'SECURE': True,
+    # 'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'staticfiles'),
 }
 # cloudinary.config(
 #   cloud_name='tidorino',
@@ -149,19 +153,37 @@ AUTH_USER_MODEL = 'accounts.BlogUser'
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 
-
+# LOGGING_LEVEL = "DEBUG"
+#
 # LOGGING = {
 #     'version': 1,
 #     'disable_existing_loggers': False,
+#     'formatters': {
+#         'verbose': {
+#             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{',
+#         },
+#     },
 #     'handlers': {
 #         'console': {
+#             'level': LOGGING_LEVEL,
 #             'class': 'logging.StreamHandler',
+#             'formatter': 'verbose',
 #         },
 #     },
 #     'loggers': {
 #         'django.db.backends': {
+#             'level': LOGGING_LEVEL,
 #             'handlers': ['console'],
-#             'level': 'DEBUG',
 #         },
+#         # 'django.request': {
+#         #     'handlers': ['console'],
+#         #     'level': 'DEBUG',
+#         #     'propagate': False,
+#         # },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'DEBUG',
 #     },
 # }

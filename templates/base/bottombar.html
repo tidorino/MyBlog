@@ -2,14 +2,16 @@
 
 <!-- Info Column -->
 <div class="col-md-4 float-right ">
-  <div class="card1 my-4">
-    <h5 class="card1-header">About</h5>
-    <div class="card1-body">
-      <p class="card1-text"> My Blog App is created using Django Web Framework for backend side, designed with bootswatch
-        theme for UI - you can also visit my website ... </p>
-      <a href="#" class="btn btn-danger">Visit Website!</a>
-      <a href="#" class="btn btn-secondary">Django Docs</a>
-    </div>
+  <div class="card1">
+      {% for info in info_app %}
+        <h3 class="card1-header">{{ info.title }}</h3>
+        <div class="card1-body">
+            <p class="card1-text"> {{ info.body}} </p>
+            <a href="#" class="btn btn-web">Visit Demo Website!</a>
+                <br>
+            <a href="#" class="btn btn-web">GitHub Docs</a>
+        </div>
+      {% endfor %}
   </div>
 </div>
 

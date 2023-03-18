@@ -4,19 +4,18 @@
 {% block page_content %}
 
     <!-- Post Filter -->
+
     <div class="post-filter container">
-        <span class="filter-item active-filter" data-filter="all">All</span>
-        <span class="filter-item" data-filter="new events">New Events</span>
-        <span class="filter-item" data-filter="courses">Courses</span>
+        <span class="filter-item active-filter" id="filter-item" data-filter="all">All</span>
+        <span class="filter-item" id="filter-item" data-filter="new events">New Events</span>
+        <span class="filter-item" id="filter-item" data-filter="courses">Courses</span>
     </div>
 
     <!-- Posts -->
     <section class="post container">
         {% for post in page_object %}
-
-        <!-- Post Box 1 -->
+        <!-- Post Box -->
             <div class="post-box ">
-
                 <img src="{{post.post_image.url}}"
                     alt="{{ post.slug }}" class="post-img">
                 <h2 class="category">{{ post.category }}</h2>
@@ -28,8 +27,13 @@
                     <a class="post-title">{{ post.title }}</a>
                 {% endif %}
 
+                <span class="post-date">{{ post.created_on }}</span>
                 <p class="post-description">{{ post.body|slice:':100'}}</p>
                 <a href="{% url 'details post' slug=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+                <div  class="profile">
+                    <img src="{{ post.author.profile_image.url }}" alt="" class="profile-img">
+                    <span class="profile-name">{{ post.author.full_name }}</span>
+                </div>
 
             </div>
         {% endfor %}
