@@ -4,7 +4,10 @@
 *See live at: www.*
 
 #### Features:
--	User Authentication – user can register, login and logout
+-	User Authentication:
+    - user can register;
+    - login - via email & password;
+    - logout.
 -	User can edit and delete his Profile
 -	Create, edit and delete Posts
 
