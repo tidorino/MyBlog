@@ -1,19 +1,28 @@
 {% extends 'base/base.html' %}
+{% load has_group %}
 {% block page_content %}
-    <div class="edit-delete">
-        <br/><br/>
-        <h2>Edit Article</h2>
-
-        <form method="post" action="{% url 'edit post' slug=object.slug %}">
-            {{ form.as_p }}
+    {% if request.user.is_superuser or request.user|has_group:"Editors" %}
+        <div class="edit-delete">
             <br/><br/>
-            <button class="sure-btn1" type="submit">Edit</button>
-            <a href="{% url 'index' %}">
-                <button class="sure-btn1" type="submit">Back</button>
-            </a>
-            {% csrf_token %}
-        </form>
-    </div>
+            <h2>Edit Article</h2>
 
+            <form method="post" action="{% url 'edit post' slug=object.slug %}">
+                {{ form.as_p }}
+                <br/><br/>
+                <button class="sure-btn1" type="submit">Edit</button>
+                <a href="{% url 'index' %}">
+                    <button class="sure-btn1" type="submit">Back</button>
+                </a>
+                {% csrf_token %}
+            </form>
+        </div>
+    {% else %}
+        <br/><br/>
+    Only for editors!
+        <br/><br/>
+        <a href="{% url 'index' %}">
+            <button class="sure-btn1" type="submit">Home</button>
+        </a>
+    {% endif %}
 
 {% endblock %}

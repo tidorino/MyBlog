@@ -12,7 +12,7 @@ UserModel = get_user_model()
 
 def index(request):
     user = UserModel.objects.all()
-    posts = Article.objects.all()
+    posts = Article.objects.filter(status=1).order_by('-created_on')
     profile = Profile.objects.all()
     paginator = Paginator(posts, 6)
     page = request.GET.get('page', 1)

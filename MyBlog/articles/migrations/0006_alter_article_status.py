@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='status',
-            field=models.IntegerField(blank=True, choices=[('Published', 1), ('Draft', 0)], null=True),
-        ),
-    ]
+            field=models.IntegerField(blank=True, choices=[(0, 'Draft'), (1, 'Published')],
+                                      default=0, null=True),
+        )]

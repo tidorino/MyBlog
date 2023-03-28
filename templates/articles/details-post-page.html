@@ -13,7 +13,7 @@
         <!-- blog section -->
         <div class="blog-card">
             <h1 class="blog-title">{{ article.title}}</h1>
-            <p class="blog-overview">{{ article.body}}</p>
+            <p class="blog-overview">{{ article.body|safe}}</p>
 
             {% include 'base/partials/author_info.html' %}
 {#        <div class="bottom">#}
@@ -74,6 +74,7 @@
                     <a href="{% url 'edit post' object.slug %}" class="btn2 grey">Edit</a>
                     <a href="{% url 'delete post' object.slug %}" class="btn2 danger">Delete</a>
                     <a href="{% url 'index' %}" class="btn2 danger">All Articles</a>
+
                 {% endif %}
             </div>
         </div>

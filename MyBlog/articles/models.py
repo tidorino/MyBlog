@@ -29,8 +29,8 @@ class Article(models.Model):
     DRAFT = 'Draft'
 
     STATUS = (
-        (PUBLISHED, 1),
-        (DRAFT, 0),
+        (0, DRAFT),
+        (1, PUBLISHED),
     )
 
     author = models.ForeignKey(
@@ -82,6 +82,7 @@ class Article(models.Model):
     status = models.IntegerField(
 
         choices=STATUS,
+        default=0,
         null=True,
         blank=True,
     )
