@@ -9,7 +9,7 @@
     - login - via email & password;
     - logout.
 -	User can edit and delete his Profile
--	Create, edit and delete Posts
+-	Create, edit and delete Articles
 
 #### A simple and complete webapp where user if is staff/superuser can create/edit/delete article, create/edit/delete profile, update profile.
 #### Also has Custom admin panel for admin.
