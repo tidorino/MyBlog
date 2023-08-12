@@ -15,7 +15,7 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyBlog.settings')
 
-# TODO --> Config WSGI serves both development env and production env;
+# TODO --> Config WSGI serves both development envs and production envs;
 #  I was using WSGI and publishing using gunicorn.
 
 if settings.DEBUG:

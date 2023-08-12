@@ -13,14 +13,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n87#k^1p1q19kb4ipl^+c*5n&de&gzitimi@8#@x@tx*m*n^jt'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # TODO Check --> SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # TODO remove when release
-ALLOWED_HOSTS = ['*']
-
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 # Application definition
 
@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myBlog_db',
-        'USER': 'postgres',
-        'PASSWORD': 'tidorino',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
@@ -130,17 +130,18 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'tidorino',
-    'API_KEY': '735794518955165',
-    'API_SECRET': 'v9IeNOCp8JDy8I-YzGGzwNaz11E',
-    'SECURE': True,
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUD_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
+    'SECURE': os.environ.get('CLOUD_SECURE'),
     # 'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'staticfiles'),
 }
+
 # cloudinary.config(
-#   cloud_name='tidorino',
-#   api_key='735794518955165',
-#   api_secret='v9IeNOCp8JDy8I-YzGGzwNaz11E',
-#   secure=True,
+#   cloud_name=os.environ.get('CLOUD_NAME'),
+#   api_key=os.environ.get('CLOUD_API_KEY'),
+#   api_secret=os.environ.get('CLOUD_API_SECRET'),
+#   secure=os.environ.get('CLOUD_SECURE'),
 # )
 
 # Default primary key field type
