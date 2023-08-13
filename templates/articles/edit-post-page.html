@@ -7,6 +7,7 @@
             <h2>Edit Article</h2>
 
             <form method="post" action="{% url 'edit post' slug=object.slug %}">
+                {{ form.media }}
                 {{ form.as_p }}
                 <br/><br/>
                 <button class="sure-btn1" type="submit">Edit</button>

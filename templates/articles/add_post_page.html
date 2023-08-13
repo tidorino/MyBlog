@@ -12,6 +12,7 @@
             <h1>Add Article</h1>
             <br/><br/>
             <form method="post" action="{% url 'add post' %}" enctype="multipart/form-data">
+                {{ form.media }}
                 {{ form.as_p }}
                 <br/><br/>
                 <button class="sure-btn1" type="submit">Add</button>

@@ -8,8 +8,8 @@
                 <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
                 <a href="{% url 'logout user' %}" class="navbtn logout" >LogOut</a>
                 <a href="{% url 'details user' pk=request.user.pk %}" class="navbtn profile">Profile</a>
-
                 <a href="{% url 'add post' %}" class="navbtn add article">Add Article</a>
+
             {% elif request.user.is_authenticated %}
                 <a href="{% url 'index' %}" class="logo">My<span>Blog</span></a>
                 <a href="{% url 'logout user' %}" class="navbtn logout" >LogOut</a>
