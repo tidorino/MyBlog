@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, DeleteView, UpdateView, CreateView
+from django.views import generic as views
 
 from MyBlog.articles.forms import AddPostForm
 from MyBlog.articles.models import Article
@@ -10,12 +10,12 @@ from MyBlog.articles.models import Article
 UserModel = get_user_model()
 
 
-class DetailsPostView(DetailView):
+class DetailsPostView(views.DetailView):
     template_name = 'articles/details-post-page.html'
     model = Article
 
 
-class AddPostView(CreateView):
+class AddPostView(views.CreateView):
     template_name = 'articles/add_post_page.html'
     model = Article
     form_class = AddPostForm
@@ -23,7 +23,7 @@ class AddPostView(CreateView):
     success_url = reverse_lazy('index')
 
 
-class EditPostView(UpdateView):
+class EditPostView(views.UpdateView):
     template_name = 'articles/edit-post-page.html'
     model = Article
     fields = ('category', 'title', 'body', 'post_image')
@@ -37,7 +37,7 @@ class EditPostView(UpdateView):
         )
 
 
-class DeletePostView(DeleteView):
+class DeletePostView(views.DeleteView):
     template_name = 'articles/delete-post-page.html'
     model = Article
     success_url = reverse_lazy('index')

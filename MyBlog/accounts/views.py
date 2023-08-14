@@ -28,8 +28,8 @@ class LogInUserView(auth_views.LoginView):
 
 class LogOutUserView(auth_views.LogoutView):
 
-    #  Override next_page of  def get_default_redirect_url from LogoutView or
-    # I can add in setting.py we add LOGOUT_URL = reverse_lazy('index')
+    #  Override next_page of  def get_default_redirect_url from LogoutView
+    # or I can add in setting.py  LOGOUT_URL = reverse_lazy('index')
     next_page = reverse_lazy('index')
 
 
