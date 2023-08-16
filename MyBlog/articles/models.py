@@ -12,13 +12,27 @@ from MyBlog.core.validators import validate_max_image_size
 UserModel = get_user_model()
 
 
-class Category(Enum):
-    new_events = 'New Events'
-    courses = 'Courses'
+# class Category(Enum):
+#     new_events = 'New Events'
+#     courses = 'Courses'
+#
+#     @classmethod
+#     def choices(cls):
+#         return [(x.name, x.value) for x in cls]
+class Category(models.Model):
+    CATEGORY_MAX_LEN = 20
 
-    @classmethod
-    def choices(cls):
-        return [(x.name, x.value) for x in cls]
+    name = models.CharField(
+        max_length=CATEGORY_MAX_LEN,
+        null=False,
+        blank=False,
+    )
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
 
 
 class Article(models.Model):
@@ -42,11 +56,11 @@ class Article(models.Model):
         null=False,
     )
 
-    category = models.CharField(
-        max_length=CATEGORY_MAX_LEN,
-        choices=Category.choices(),
-        null=True,
-        blank=True,
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
     )
 
     title = models.CharField(
@@ -87,6 +101,7 @@ class Article(models.Model):
         null=True,
         blank=True,
     )
+    likes = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-created_on']
@@ -108,3 +123,18 @@ class Article(models.Model):
     def __str__(self):
         return f'{self.title}' + '|' + f'{self.author}'
 
+
+class ArticleLike(models.Model):
+    post = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        related_name='post_likes',
+        null=False,
+        blank=True,
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+        related_name='user_likes'
+    )
