@@ -1,5 +1,3 @@
-from enum import Enum
-
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
@@ -12,13 +10,6 @@ from MyBlog.core.validators import validate_max_image_size
 UserModel = get_user_model()
 
 
-# class Category(Enum):
-#     new_events = 'New Events'
-#     courses = 'Courses'
-#
-#     @classmethod
-#     def choices(cls):
-#         return [(x.name, x.value) for x in cls]
 class Category(models.Model):
     CATEGORY_MAX_LEN = 20
 

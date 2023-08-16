@@ -42,8 +42,6 @@ class DeletePostView(views.DeleteView):
     model = Article
     success_url = reverse_lazy('index')
 
-# TODO -> https://stackoverflow.com/questions/65276895/querying-a-user-profile-model
-
 
 def like(request, post_id):
     user = request.user
@@ -61,3 +59,5 @@ def like(request, post_id):
     post.save()
 
     return HttpResponseRedirect(reverse('details post', args=[post.slug]))
+
+

@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 from MyBlog.accounts.models import Profile
-from MyBlog.articles.models import Article
+from MyBlog.articles.models import Article, Category
 from MyBlog.my_blog.models import InfoAboutApp
 
 UserModel = get_user_model()
@@ -25,21 +25,11 @@ def index(request):
         'no_profile': True,
         'page_object': page_object,
         'info_app': info_app,
-        # 'liked_posts': liked_posts,
     }
 
     return render(request, 'my_blog/home-page.html', context)
 
 
-# def category_view(request, category):
-#     post = Article.objects.filter(category=category)
-#     category_posts = ShowByCategory.objects.get(post=post)
-#     print(category_posts)
-#     context = {
-#         'category': category_slug,
-#         'category_posts': category_posts,
-#     }
-#     return render(request, 'my_blog/categories.html', context)
 
 
 
