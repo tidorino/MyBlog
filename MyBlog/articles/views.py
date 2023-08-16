@@ -1,11 +1,11 @@
 from django.contrib.auth import get_user_model
+from django.http import HttpResponseRedirect
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic as views
 
 from MyBlog.articles.forms import AddPostForm
-from MyBlog.articles.models import Article
-
+from MyBlog.articles.models import Article, ArticleLike
 
 UserModel = get_user_model()
 
@@ -43,3 +43,21 @@ class DeletePostView(views.DeleteView):
     success_url = reverse_lazy('index')
 
 # TODO -> https://stackoverflow.com/questions/65276895/querying-a-user-profile-model
+
+
+def like(request, post_id):
+    user = request.user
+    post = Article.objects.get(id=post_id)
+    current_likes = post.likes
+    liked = ArticleLike.objects.filter(user=user, post=post).count()
+    if not liked:
+        liked = ArticleLike.objects.create(user=user, post=post)
+        current_likes = current_likes + 1
+    else:
+        liked = ArticleLike.objects.filter(user=user, post=post).delete()
+        current_likes = current_likes - 1
+
+    post.likes = current_likes
+    post.save()
+
+    return HttpResponseRedirect(reverse('details post', args=[post.slug]))

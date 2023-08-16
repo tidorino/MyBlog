@@ -1,0 +1,40 @@
+{#{% extends 'base/base.html' %}#}
+{#{% load static %}#}
+{##}
+{#{% block page_content %}#}
+{#    {{ category }}#}
+{#    <!-- Posts -->#}
+{#    <section class="post container">#}
+{#        {%  for post  in category_posts %}#}
+{#        <!-- Post Box -->#}
+{#            <div class="post-box ">#}
+{#                <img src="{{post.post_image.url}}"#}
+{#                    alt="{{ post.slug }}" class="post-img">#}
+{#                <h2 class="category">{{ post.category }}</h2>#}
+{##}
+{#                <!-- Link to the article -->#}
+{#                {% if request.user.is_authenticated %}#}
+{#                    <a href="{% url 'details post' slug=post.slug %}"#}
+{#                       class="post-title">{{ post.title }}</a>#}
+{#                {% else %}#}
+{#                    <a class="post-title">{{ post.title }}</a>#}
+{#                {% endif %}#}
+{##}
+{#                <span class="post-date">{{ post.created_on }}</span>#}
+{#                <p class='post-description'>{{ post.body|safe|truncatewords:100}}</p>#}
+{##}
+{#                <a href="{% url 'details post' slug=post.slug %}" class="btn btn-primary">Read More &rarr;</a>#}
+{#                <div  class="profile">#}
+{#                    <img src="{{ post.author.profile_image.url }}" alt="" class="profile-img">#}
+{#                    <span class="profile-name">{{ post.author.full_name }}</span>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </section>#}
+{#{% include 'base/partials/pagination.html' %}#}
+{##}
+{#    {% block bottombar %}#}
+{#    {% include 'base/bottombar.html' %}#}
+{#    {% endblock bottombar %}#}
+{#{% endblock %}#}

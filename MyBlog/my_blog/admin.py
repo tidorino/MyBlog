@@ -10,3 +10,5 @@ from MyBlog.my_blog.models import InfoAboutApp
 class InfoAboutAppAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'body')
+
+

@@ -435,10 +435,10 @@ h2.intro{
 
 .card1 {
     background-color: var(--bg-color);
-    border: 1px solid var(--nav-bar);
+    /*border: 1px solid var(--nav-bar);*/
     border-radius: 4px;
     padding: 40px;
-    box-shadow: 0 16px 48px #6a6a6b;
+    box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
     position: sticky;
     left: 190px;
     margin-left: auto;

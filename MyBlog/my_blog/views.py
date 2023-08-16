@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
-
 from django.shortcuts import render
 
 from MyBlog.accounts.models import Profile
@@ -30,5 +29,18 @@ def index(request):
     }
 
     return render(request, 'my_blog/home-page.html', context)
+
+
+# def category_view(request, category):
+#     post = Article.objects.filter(category=category)
+#     category_posts = ShowByCategory.objects.get(post=post)
+#     print(category_posts)
+#     context = {
+#         'category': category_slug,
+#         'category_posts': category_posts,
+#     }
+#     return render(request, 'my_blog/categories.html', context)
+
+
 
 

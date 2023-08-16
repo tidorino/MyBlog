@@ -17,7 +17,7 @@
 .title {
     font-size: 3em;
     text-align: center;
-    line-height: 0em;
+    line-height: 0;
     color: grey;
 }
 .text {
