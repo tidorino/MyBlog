@@ -6,7 +6,7 @@ UserModel = get_user_model()
 
 class TestCaseBase(TestCase):
     def assertEmpty(self, collection):
-        return self.assertEqual(0, len(collection), 'It is not empty')
+        self.assertEqual(0, len(collection), 'It is not empty')
 
     def _create_and_login_user(self, credentials):
         user = UserModel.objects.create_user(**credentials)

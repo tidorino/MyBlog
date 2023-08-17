@@ -22,11 +22,8 @@ class TestCustomerUserManager(TestCase):
         self.assertTrue(user.is_staff)
         self.assertEqual(user.email, 'testt_user@gmail.com')
 
-    def test__when_no_email_raise_error(self):
-
-        self.assertRaises(ValueError, UserModel.objects.create_user, email='', password='secret123')
-        with self.assertRaises(Exception) as ex:
+    def test_create_user_with_empty_email_raises_error(self):
+        with self.assertRaises(ValueError) as context:
             UserModel.objects.create_user(email='', password='secret123')
-        self.assertEqual('The given email must be set', str(ex.exception))
-
+        self.assertEqual(str(context.exception), 'The given email must be set')
 
