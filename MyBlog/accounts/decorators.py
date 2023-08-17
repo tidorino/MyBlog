@@ -15,8 +15,8 @@ def allow_groups(groups=None):
 
             if user_groups or request.user.is_superuser:
                 return render(request, 'my_blog/home-page.html')
-
-            return render(request, 'accounts/home-no-profile.html')
+            else:
+                return render(request, 'my_blog/all_post_list.html')
 
         return wrapper
 

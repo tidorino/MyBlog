@@ -12,13 +12,8 @@
                     alt="{{ post.slug }}" class="post-img">
                 <h2 class="category">{{ post.category }}</h2>
 
-                <!-- Link to the article -->
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'details post' slug=post.slug %}"
-                       class="post-title">{{ post.title }}</a>
-                {% else %}
-                    <a class="post-title">{{ post.title }}</a>
-                {% endif %}
+                <a class="post-title">{{ post.title }}</a>
+
 
                 <span class="post-date">{{ post.created_on }}</span>
                 <p class='post-description'>{{ post.body|safe|truncatewords:100}}</p>
