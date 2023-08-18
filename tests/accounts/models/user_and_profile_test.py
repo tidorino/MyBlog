@@ -52,7 +52,7 @@ class ProfileModelTests(TestCase):
 
         with self.assertRaises(ValidationError) as context:
             validate_only_letters(self.profile.first_name)
-        self.assertRaisesMessage('Only letters are allowed', context.exception)
+        self.assertEqual(context.exception.message, 'Only letters are allowed')
 
     def test_profile_save__when_last_name_only_letters__expect_correct_result(self):
 
@@ -67,7 +67,7 @@ class ProfileModelTests(TestCase):
 
         with self.assertRaises(ValidationError) as context:
             validate_only_letters(self.profile.last_name)
-        self.assertRaisesMessage('Only letters are allowed', context.exception)
+        self.assertEqual(context.exception.message, 'Only letters are allowed')
 
     def test_str_representation_of_profile(self):
         profile_full_name = 'Teddy Tooo'

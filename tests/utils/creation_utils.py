@@ -1,5 +1,5 @@
 from MyBlog.accounts.models import Profile
-from MyBlog.articles.models import Article
+from MyBlog.articles.models import Article, Category
 
 
 def create_profile(user):
@@ -15,10 +15,12 @@ def create_profile(user):
 
 def created_articles_for_user(profile, count=5):
     result = []
+    category = create_category()
+
     for i in range(count):
         article = Article(
             author=create_profile(profile),
-            category='Courses',
+            category=category,
             title=f'Title {i+1}',
             body=f'Body {i+1}',
             post_image=f'image {i+1}.jpg ',
@@ -28,13 +30,19 @@ def created_articles_for_user(profile, count=5):
     return result
 
 
-def create_article(profile):
+def create_article(profile, category):
     article = Article(
         author=create_profile(profile),
-        category='Courses',
+        category=category,
         title='Title',
         body='Body',
         post_image='image.jpg',
     )
     article.save()
     return article
+
+
+def create_category(name='Courses'):
+    category = Category(name=name)
+    category.save()
+    return category

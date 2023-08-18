@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 
+from MyBlog.articles.models import Category
 from tests.utils.BaseTestCase import TestCaseBase
-from tests.utils.creation_utils import create_profile, created_articles_for_user
+from tests.utils.creation_utils import create_profile, created_articles_for_user, create_category
 
 UserModel = get_user_model()
 
@@ -77,5 +78,4 @@ class UserDetailsViewTests(TestCaseBase):
         self.assertEqual(articles_on_page, len(response.context['user_article']))
         self.assertEqual(3, response.context['user_article_counts'])
 
-    def test_user_details__when_four_articles_on_page_2__expect_one_article_view(self):
-        pass
+
