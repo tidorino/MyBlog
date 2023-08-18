@@ -1,9 +1,11 @@
 import os.path
 from pathlib import Path
+from dotenv import load_dotenv
 
 import cloudinary
 import cloudinary_storage
 from django.urls import reverse_lazy
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n87#k^1p1q19kb4ipl^+c*5n&de&gzitimi@8#@x@tx*m*n^jt'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # TODO Check --> SECURITY WARNING: don't run with debug turned on in production!
