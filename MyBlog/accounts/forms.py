@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
 
 from django.views.generic import UpdateView
@@ -50,8 +50,9 @@ class RegisterUserForm(UserCreationForm):
         return user
 
 
-class EditUserForm(UpdateView):
+class EditUserForm(UserChangeForm):
+    class Meta:
+        model = Profile
+        fields = ('first_name', 'last_name', 'profile_image',)
 
-    model = Profile
-    template_name = 'accounts/profile-edit-page.html'
-    fields = '__all__'
+
