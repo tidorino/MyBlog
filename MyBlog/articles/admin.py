@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from MyBlog.accounts.models import BlogUser
-from MyBlog.articles.models import Article, Category
+from MyBlog.articles.models import Article, Category, ArticleLike
 
 
 @admin.register(Category)
@@ -18,4 +18,6 @@ class ArticleAdmin(admin.ModelAdmin):
     sortable_by = ('created_on', 'author',)
 
 
-
+@admin.register(ArticleLike)
+class ArticleLikeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'post', 'user')

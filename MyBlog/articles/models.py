@@ -92,6 +92,7 @@ class Article(models.Model):
         null=True,
         blank=True,
     )
+    likes = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-created_on']
@@ -113,3 +114,18 @@ class Article(models.Model):
     def __str__(self):
         return f'{self.title}' + '|' + f'{self.author}'
 
+
+class ArticleLike(models.Model):
+    post = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        related_name='post_likes',
+        null=False,
+        blank=True,
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+        related_name='user_likes'
+    )
