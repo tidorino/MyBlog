@@ -15,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n87#k^1p1q19kb4ipl^+c*5n&de&gzitimi@8#@x@tx*m*n^jt'
 
+
 # TODO Check --> SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myBlog_db',
-        'USER': 'postgres',
-        'PASSWORD': 'tidorino',
-        'HOST': '127.0.0.1',
+        'NAME': 'MyBlog_db',
+        'USER': 'postgres-user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
