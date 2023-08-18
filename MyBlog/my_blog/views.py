@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.models import Article
@@ -13,6 +14,7 @@ UserModel = get_user_model()
 def index(request):
     user = UserModel.objects.all()
     posts = Article.objects.filter(status=1).order_by('-created_on')
+
     profile = Profile.objects.all()
     paginator = Paginator(posts, 6)
     page = request.GET.get('page', 1)
@@ -30,5 +32,6 @@ def index(request):
     }
 
     return render(request, 'my_blog/home-page.html', context)
+
 
 
