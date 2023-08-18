@@ -11,13 +11,20 @@ from MyBlog.core.validators import validate_max_image_size
 UserModel = get_user_model()
 
 
-class Category(Enum):
-    new_events = 'New Events'
-    courses = 'Courses'
+class Category(models.Model):
+    CATEGORY_MAX_LEN = 20
 
-    @classmethod
-    def choices(cls):
-        return [(x.name, x.value) for x in cls]
+    name = models.CharField(
+        max_length=CATEGORY_MAX_LEN,
+        null=False,
+        blank=False,
+    )
+
+    # class Meta:
+    #     verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
 
 
 class Article(models.Model):
@@ -41,11 +48,11 @@ class Article(models.Model):
         null=False,
     )
 
-    category = models.CharField(
-        max_length=CATEGORY_MAX_LEN,
-        choices=Category.choices(),
-        null=True,
-        blank=True,
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
     )
 
     title = models.CharField(
