@@ -27,9 +27,10 @@
                 {% endif %}
 
                 <span class="post-date">{{ post.created_on }}</span>
-                <p class='post-description'>{{ post.body|slice:":100"}}</p>
+                <p class='post-description'>{{ post.body|safe|truncatewords:80}}</p>
 
                 <a href="{% url 'details post' slug=post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+
                 <div  class="profile">
                     <img src="{{ post.author.profile_image.url }}" alt="" class="profile-img">
                     <span class="profile-name">{{ post.author.full_name }}</span>

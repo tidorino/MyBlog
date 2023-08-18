@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 
     'cloudinary',
+    'ckeditor',
 
     'MyBlog.my_blog',
     'MyBlog.accounts',

@@ -1,7 +1,12 @@
 from django.contrib import admin
 
 from MyBlog.accounts.models import BlogUser
-from MyBlog.articles.models import Article
+from MyBlog.articles.models import Article, Category
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
 
 
 @admin.register(Article)

@@ -1,5 +1,4 @@
-from enum import Enum
-
+from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
@@ -20,8 +19,8 @@ class Category(models.Model):
         blank=False,
     )
 
-    # class Meta:
-    #     verbose_name_plural = 'Categories'
+    class Meta:
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
@@ -68,7 +67,7 @@ class Article(models.Model):
         blank=True,
     )
 
-    body = models.TextField(
+    body = RichTextField(
         null=True,
         blank=True,
     )
