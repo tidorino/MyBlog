@@ -67,4 +67,4 @@ class BlogUserAdmin(auth_admin.UserAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['first_name', 'last_name']
