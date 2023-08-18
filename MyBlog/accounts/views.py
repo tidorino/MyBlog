@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.shortcuts import render
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy
@@ -16,10 +17,14 @@ class RegisterUserView(views.CreateView):
     success_url = reverse_lazy('index')
 
     def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-
-        login(request, self.object)
-        return response
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            response = super().post(request, *args, **kwargs)
+            login(request, self.object)
+            return response
+        else:
+            # Form is not valid, render the form with validation errors
+            return render(request, self.template_name, {'form': form})
 
 
 class LogInUserView(auth_views.LoginView):
