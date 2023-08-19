@@ -8,12 +8,13 @@
             </h3>
             <div class="sure-buttons">
                 <form method="post" action="{% url 'delete post' slug=object.slug %}">
+                    <br>
                     <button>Yes</button>
                     {% csrf_token %}
                 </form>
-
+                <br>
                 <p>
-                    <a href="{% url 'details post' slug=object.slug %}" class="back-home">Go Back</a>
+                    <a href="{% url 'details post' slug=object.slug %}" class="back-home"><button>Go Back</button></a>
                 </p>
             </div>
         </div>
