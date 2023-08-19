@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy
 
-from MyBlog.accounts.forms import RegisterUserForm, EditUserForm
+from MyBlog.accounts.forms import RegisterUserForm
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.models import Article
 
@@ -64,7 +64,7 @@ class UserDetailsView(views.DetailView):
 class UserEditView(views.UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = Profile
-    fields = ('first_name', 'last_name', 'profile_image', )
+    fields = ('first_name', 'last_name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

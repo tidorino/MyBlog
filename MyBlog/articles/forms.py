@@ -26,3 +26,9 @@ class AddPostForm(forms.ModelForm):
     #         item = Item.objects.get(pk=int(item_id))
     #     except (ValueError, Item.DoesNotExist):
     #         raise Http404
+
+
+class EditArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ('category', 'title', 'body')

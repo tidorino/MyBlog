@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, DeleteView, UpdateView, CreateView
 
-from MyBlog.articles.forms import AddPostForm
+from MyBlog.articles.forms import AddPostForm, EditArticleForm
 from MyBlog.articles.models import Article, ArticleLike
 
 UserModel = get_user_model()
@@ -26,7 +26,7 @@ class AddPostView(CreateView):
 class EditPostView(UpdateView):
     template_name = 'articles/edit-post-page.html'
     model = Article
-    fields = ('category', 'title', 'body', 'post_image')
+    form_class = EditArticleForm
 
     def get_success_url(self):
         return reverse_lazy(
