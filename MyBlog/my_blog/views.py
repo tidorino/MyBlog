@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 
 from django.shortcuts import render
-from django.views.generic import ListView
 
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.models import Article
@@ -28,7 +27,6 @@ def index(request):
         'no_profile': True,
         'page_object': page_object,
         'info_app': info_app,
-        # 'liked_posts': liked_posts,
     }
 
     return render(request, 'my_blog/home-page.html', context)
