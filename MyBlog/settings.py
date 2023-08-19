@@ -140,12 +140,6 @@ CLOUDINARY_STORAGE = {
     'SECURE': True,
     # 'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'staticfiles'),
 }
-# cloudinary.config(
-#   cloud_name='tidorino',
-#   api_key='735794518955165',
-#   api_secret='v9IeNOCp8JDy8I-YzGGzwNaz11E',
-#   secure=True,
-# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
