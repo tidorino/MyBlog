@@ -1,10 +1,9 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy
 
-from MyBlog.accounts.forms import RegisterUserForm
+from MyBlog.accounts.forms import RegisterUserForm, EditUserForm
 from MyBlog.accounts.models import Profile
 from MyBlog.articles.models import Article
 
@@ -17,14 +16,10 @@ class RegisterUserView(views.CreateView):
     success_url = reverse_lazy('index')
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            response = super().post(request, *args, **kwargs)
-            login(request, self.object)
-            return response
-        else:
-            # Form is not valid, render the form with validation errors
-            return render(request, self.template_name, {'form': form})
+        response = super().post(request, *args, **kwargs)
+
+        login(request, self.object)
+        return response
 
 
 class LogInUserView(auth_views.LoginView):
@@ -33,15 +28,11 @@ class LogInUserView(auth_views.LoginView):
 
 class LogOutUserView(auth_views.LogoutView):
 
-    #  Override next_page of  def get_default_redirect_url from LogoutView
-    # or I can add in setting.py  LOGOUT_URL = reverse_lazy('index')
+    #  Override next_page of  def get_default_redirect_url from LogoutView or
+    # I can add in setting.py  LOGOUT_URL = reverse_lazy('index')
     next_page = reverse_lazy('index')
 
 
-# TODO https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/
-#  - how to extend user model with Profile
-#  and using signals !!!
-#  Also for Detail User is needed @login required !!
 class UserDetailsView(views.DetailView):
 
     template_name = 'accounts/profile-details-page.html'
@@ -73,7 +64,6 @@ class UserDetailsView(views.DetailView):
 class UserEditView(views.UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = Profile
-
     fields = ('first_name', 'last_name', 'profile_image', )
 
     def get_context_data(self, **kwargs):

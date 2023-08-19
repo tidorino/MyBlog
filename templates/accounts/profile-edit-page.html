@@ -8,7 +8,7 @@
         <form method="post" action="{% url 'edit user' pk=object.pk%}">
             {{ form.as_p }}
             <br/><br/>
-            <button class="sure-btn1" type="submit">Edit</button>
+            <button class="sure-btn1" type="submit">Update</button>
             <a href="{% url 'index' %}">
                 <button class="sure-btn1" type="submit">Back</button>
             </a>

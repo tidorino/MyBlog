@@ -1,7 +1,7 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
 
 from MyBlog.accounts.models import Profile
 from MyBlog.core.validators import validate_max_image_size

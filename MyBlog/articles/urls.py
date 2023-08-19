@@ -1,8 +1,7 @@
 from django.urls import path, include
 
-from MyBlog.articles.views import DetailsPostView, EditPostView, DeletePostView, AddPostView,\
-    like
-
+from MyBlog.articles.views import DetailsPostView, \
+    EditPostView, DeletePostView, AddPostView, like
 
 urlpatterns = (
     path('add/', AddPostView.as_view(), name='add post'),

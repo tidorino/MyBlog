@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
 
 from django.urls import reverse_lazy, reverse
-from django.views import generic as views
+from django.views.generic import DetailView, DeleteView, UpdateView, CreateView
 
 from MyBlog.articles.forms import AddPostForm
 from MyBlog.articles.models import Article, ArticleLike
@@ -10,12 +10,12 @@ from MyBlog.articles.models import Article, ArticleLike
 UserModel = get_user_model()
 
 
-class DetailsPostView(views.DetailView):
+class DetailsPostView(DetailView):
     template_name = 'articles/details-post-page.html'
     model = Article
 
 
-class AddPostView(views.CreateView):
+class AddPostView(CreateView):
     template_name = 'articles/add_post_page.html'
     model = Article
     form_class = AddPostForm
@@ -23,7 +23,7 @@ class AddPostView(views.CreateView):
     success_url = reverse_lazy('index')
 
 
-class EditPostView(views.UpdateView):
+class EditPostView(UpdateView):
     template_name = 'articles/edit-post-page.html'
     model = Article
     fields = ('category', 'title', 'body', 'post_image')
@@ -37,7 +37,7 @@ class EditPostView(views.UpdateView):
         )
 
 
-class DeletePostView(views.DeleteView):
+class DeletePostView(DeleteView):
     template_name = 'articles/delete-post-page.html'
     model = Article
     success_url = reverse_lazy('index')
@@ -59,5 +59,3 @@ def like(request, post_id):
     post.save()
 
     return HttpResponseRedirect(reverse('details post', args=[post.slug]))
-
-

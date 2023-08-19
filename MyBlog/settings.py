@@ -1,9 +1,11 @@
 import os.path
 from pathlib import Path
+from dotenv import load_dotenv
 
 import cloudinary
 import cloudinary_storage
 from django.urls import reverse_lazy
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,12 +17,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+
 # TODO Check --> SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # TODO remove when release
 ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+
 
 # Application definition
 
@@ -80,23 +83,13 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myBlog_db',
+        'NAME': 'MyBlog_db',
         'USER': 'postgres-user',
         'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.environ.get('DB_ENGINE'),
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT'),
-#     }
-# }
 
 
 # Password validation
@@ -141,18 +134,17 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUD_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
-    'SECURE': os.environ.get('CLOUD_SECURE'),
+    'CLOUD_NAME': 'tidorino',
+    'API_KEY': '735794518955165',
+    'API_SECRET': 'v9IeNOCp8JDy8I-YzGGzwNaz11E',
+    'SECURE': True,
     # 'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'staticfiles'),
 }
-
 # cloudinary.config(
-#   cloud_name=os.environ.get('CLOUD_NAME'),
-#   api_key=os.environ.get('CLOUD_API_KEY'),
-#   api_secret=os.environ.get('CLOUD_API_SECRET'),
-#   secure=os.environ.get('CLOUD_SECURE'),
+#   cloud_name='tidorino',
+#   api_key='735794518955165',
+#   api_secret='v9IeNOCp8JDy8I-YzGGzwNaz11E',
+#   secure=True,
 # )
 
 # Default primary key field type
