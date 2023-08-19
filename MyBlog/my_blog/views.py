@@ -30,6 +30,3 @@ def index(request):
     }
 
     return render(request, 'my_blog/home-page.html', context)
-
-
-
